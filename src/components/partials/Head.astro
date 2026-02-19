@@ -1,0 +1,66 @@
+---
+import siteConfig from "@/site.config";
+import ClientRouter from "astro/components/ClientRouter.astro";
+
+export interface Props {
+    title?: string;
+    description?: string;
+}
+
+const { title, description = siteConfig.description } = Astro.props;
+
+const pageTitle = title ? `${title} | ${siteConfig.title}` : siteConfig.title;
+
+const ogImageUrl = new URL(siteConfig.ogImage, Astro.site);
+const ogImageSquareUrl = new URL(siteConfig.ogImageSquare, Astro.site);
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<meta name="url" content={Astro.url.href} />
+<meta name="robots" content="index,follow" />
+<meta name="language" content="EN" />
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Twitter meta tags -->
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:domain" content={Astro.url.hostname} />
+<meta property="twitter:url" content={Astro.url.href} />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+<meta name="twitter:image:alt" content="Desktop Cover" />
+
+<!-- Open Graph -->
+
+<meta property="og:title" content={pageTitle} />
+<meta property="og:site_name" content={siteConfig.title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url.href} />
+<meta property="og:description" content={description} />
+
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:secure_url" content={ogImageUrl} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Desktop Cover" />
+
+<meta property="og:image" content={ogImageSquareUrl} />
+<meta property="og:image:secure_url" content={ogImageSquareUrl} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="400" />
+<meta property="og:image:alt" content="Mobile Cover" />
+
+<!-- Favicon -->
+
+<link rel="icon" href={siteConfig.favicon} />
+
+<!-- <ClientRouter /> -->

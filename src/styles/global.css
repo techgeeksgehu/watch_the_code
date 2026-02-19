@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+	--font-sans: var(--font-noto-sans);
+	--font-pokemon-hollow: var(--font-pokemon-hollow);
+	--font-pokemon-solid: var(--font-pokemon-solid);
+}
+
+@layer base {
+	body {
+		@apply min-h-lvh overflow-x-hidden bg-black text-white;
+	}
+
+	img {
+		@apply select-none;
+	}
+}
+
+@layer utilities {
+	.flex-center {
+		@apply flex justify-center items-center;
+	}
+	.col-center {
+		@apply flex flex-col justify-center items-center;
+	}
+	.abs-center {
+		@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+	}
+}
