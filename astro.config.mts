@@ -8,6 +8,9 @@ import fonts from "./fonts";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://watchthecode.gehu.in",
+	base: "watch_the_code",
+	compressHTML: true,
+	trailingSlash: "always",
 	vite: {
 		plugins: [tailwindcss()],
 	},
