@@ -11,7 +11,12 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
-	integrations: [icon(), playformCompress()],
+	integrations: [
+		icon(),
+		playformCompress({
+			Image: false,
+		}),
+	],
 	experimental: {
 		fonts,
 	},
