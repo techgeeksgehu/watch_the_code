@@ -10,7 +10,7 @@ export default defineConfig({
 	site: "https://watchthecode.gehu.in",
 	compressHTML: true,
 	trailingSlash: "always",
-	cacheDir: "./.cache",
+	cacheDir: "./.astro/cache",
 	vite: {
 		plugins: [tailwindcss()],
 	},

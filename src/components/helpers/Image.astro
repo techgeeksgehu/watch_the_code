@@ -5,4 +5,4 @@ import type { LocalImageProps, RemoteImageProps } from "astro:assets";
 type Props = LocalImageProps | RemoteImageProps;
 ---
 
-<Picture formats={["avif", "webp"]} {...Astro.props} />
+<Picture formats={["avif", "webp"]} {...Astro.props} loading="eager" />

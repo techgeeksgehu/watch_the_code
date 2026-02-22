@@ -17,6 +17,11 @@ import Section12 from "@/components/pages/index/Section12.astro";
 ---
 
 <BaseLayout class="bg-[#b4c7ce]">
+	<div id="loader-overlay">
+		<div id="loader-spinner"></div>
+		<p id="loader-text">Loading...</p>
+	</div>
+
 	<main>
 		<Section1 />
 		<Section2 />
@@ -33,3 +38,169 @@ import Section12 from "@/components/pages/index/Section12.astro";
 		<SectionFinal />
 	</main>
 </BaseLayout>
+
+<script>
+	// Move loader outside #smooth-wrapper so `position: fixed` works
+	// (ScrollSmoother applies transforms that break fixed positioning)
+	const loaderEl = document.getElementById("loader-overlay");
+	if (loaderEl) document.body.appendChild(loaderEl);
+
+	let mediaReady = false;
+	let gsapReady = false;
+
+	function hideLoader() {
+		const overlay = document.getElementById("loader-overlay");
+		if (!overlay) return;
+		overlay.classList.add("loaded");
+		document.body.classList.remove("loading");
+		setTimeout(() => overlay.remove(), 600);
+	}
+
+	function tryHideLoader() {
+		if (mediaReady && gsapReady) {
+			hideLoader();
+		}
+	}
+
+	// --- Wait for GSAP / ScrollSmoother ---
+	function onGsapReady() {
+		gsapReady = true;
+		const loaderText = document.getElementById("loader-text");
+		if (loaderText && mediaReady) {
+			loaderText.textContent = "Ready!";
+		}
+		tryHideLoader();
+	}
+
+	if ((window as any).__gsapReady) {
+		onGsapReady();
+	} else {
+		window.addEventListener("gsap:ready", onGsapReady, { once: true });
+	}
+
+	// --- Wait for all media assets ---
+	const pendingAssets = new Set<HTMLElement>();
+
+	function waitForMedia() {
+		const images = Array.from(document.querySelectorAll("img"));
+		const totalAssets = images.length;
+		let loadedAssets = 0;
+
+		const loaderText = document.getElementById("loader-text");
+
+		// Track all assets as pending
+		for (const el of images) pendingAssets.add(el);
+
+		function markLoaded(el: HTMLElement) {
+			pendingAssets.delete(el);
+			loadedAssets++;
+			if (loaderText) {
+				const pct = Math.round((loadedAssets / totalAssets) * 100);
+				loaderText.textContent = `Loading… ${pct}%`;
+			}
+			if (loadedAssets >= totalAssets) {
+				mediaReady = true;
+				tryHideLoader();
+			}
+		}
+
+		if (totalAssets === 0) {
+			mediaReady = true;
+			tryHideLoader();
+			return;
+		}
+
+		for (const img of images) {
+			if (img.complete && img.naturalWidth > 0) {
+				markLoaded(img);
+			} else {
+				img.addEventListener("load", () => markLoaded(img), {
+					once: true,
+				});
+				img.addEventListener("error", () => markLoaded(img), {
+					once: true,
+				});
+			}
+		}
+	}
+
+	document.body.classList.add("loading");
+
+	if (document.readyState === "complete") {
+		waitForMedia();
+	} else {
+		window.addEventListener("load", waitForMedia, { once: true });
+	}
+
+	// Safety timeout — don't block forever
+	setTimeout(() => {
+		if (!mediaReady || !gsapReady) {
+			if (!gsapReady) console.warn("[Loader timeout] GSAP not ready");
+			if (pendingAssets.size > 0) {
+				console.warn(
+					`[Loader timeout] ${pendingAssets.size} asset(s) still loading:`,
+				);
+				for (const el of pendingAssets) {
+					if (el instanceof HTMLImageElement) {
+						console.warn(
+							"  IMG:",
+							el.src || el.currentSrc || el.outerHTML,
+						);
+					} else if (el instanceof HTMLVideoElement) {
+						const src =
+							el.src ||
+							el.querySelector("source")?.src ||
+							el.outerHTML.slice(0, 200);
+						console.warn("  VIDEO:", src);
+					}
+				}
+			}
+			hideLoader();
+		}
+	}, 15000);
+</script>
+
+<style>
+	#loader-overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 9999;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		background: #b4c7ce;
+		transition: opacity 0.5s ease;
+	}
+
+	#loader-overlay.loaded {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	#loader-spinner {
+		width: 56px;
+		height: 56px;
+		border: 5px solid rgba(0, 0, 0, 0.15);
+		border-top-color: #333;
+		border-radius: 50%;
+		animation: spin 0.8s linear infinite;
+	}
+
+	#loader-text {
+		font-size: 0.875rem;
+		color: #444;
+		letter-spacing: 0.05em;
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	:global(body.loading) {
+		overflow: hidden;
+	}
+</style>

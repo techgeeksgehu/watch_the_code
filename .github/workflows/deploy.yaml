@@ -35,7 +35,7 @@ jobs:
       - name: Astro cache
         uses: actions/cache@v5
         with:
-          path: .cache
+          path: "./.astro"
           key: astro-${{ runner.os }}
 
       - name: Build

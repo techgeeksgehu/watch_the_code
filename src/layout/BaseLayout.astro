@@ -43,6 +43,9 @@ const { class: className, ...props } = Astro.props;
                 effects: true,
                 ease: "power1.out",
             });
+
+            window.__gsapReady = true;
+            window.dispatchEvent(new CustomEvent("gsap:ready"));
         </script>
     </body>
 </html>
