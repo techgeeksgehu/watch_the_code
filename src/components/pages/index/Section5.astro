@@ -1,0 +1,98 @@
+---
+import Image from "@/components/helpers/Image.astro";
+import Img1 from "@/assets/images/pages/index/sec 5/1.png";
+import Img2 from "@/assets/images/pages/index/sec 5/2.png";
+---
+
+<section id="section-5" class="relative overflow-hidden">
+    <div class="h-lvh w-full grid grid-cols-1 md:grid-cols-2">
+        <div class="h-lvh w-full">
+            <Image
+                src={Img1}
+                alt="Image 1"
+                class="w-full h-full object-contain object-center md:object-top"
+                id="section-5-img1"
+            />
+        </div>
+        <div class="h-lvh w-full">
+            <Image
+                src={Img2}
+                alt="Image 2"
+                class="w-full h-full object-contain object-center md:object-bottom"
+                style="box-shadow: 0 0 10px 10px transparent inset;"
+                id="section-5-img2"
+            />
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.set("#section-5", { marginTop: "-100vh", opacity: 0 });
+
+        const media = gsap.matchMedia();
+
+        media.add("(min-width: 768px)", () => {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#section-5",
+                    start: "top top",
+                    end: "+=200% bottom",
+                    scrub: true,
+                    pin: true,
+                },
+            })
+                .to(
+                    "#section-5",
+                    { opacity: 1, duration: 0.5, ease: "none" },
+                    0,
+                )
+                .to(
+                    "#section-5-img1",
+                    {
+                        yPercent: 5,
+
+                        duration: 3,
+                        ease: "none",
+                    },
+                    0.1,
+                )
+                .to(
+                    "#section-5-img2",
+                    {
+                        yPercent: -10,
+                        duration: 3,
+                        scale: 0.8,
+                        ease: "none",
+                    },
+                    0.1,
+                );
+        });
+
+        media.add("(max-width: 767px)", () => {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#section-5",
+                    start: "top top",
+                    end: "+=200% bottom",
+                    scrub: true,
+                    pin: true,
+                },
+            })
+                .to(
+                    "#section-5",
+                    { opacity: 1, duration: 0.5, ease: "none" },
+                    0,
+                )
+                .to(
+                    "#section-5-img1, #section-5-img2",
+                    {
+                        yPercent: -200,
+                        duration: 3,
+                        ease: "none",
+                    },
+                    0.1,
+                );
+        });
+    });
+</script>

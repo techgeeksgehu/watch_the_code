@@ -1,0 +1,81 @@
+---
+import Image from "@/components/helpers/Image.astro";
+import GuyImage from "@/assets/images/pages/index/sec 6/guy.png";
+import BGImage from "@/assets/images/pages/index/sec 6/bg.png";
+---
+
+<section id="section-6" class="relative opacity-0 overflow-hidden">
+    <Image
+        src={BGImage}
+        id="section-6-bg"
+        alt="Background"
+        class="absolute inset-0 w-full h-lvh object-cover z-0 blur-[2px]"
+        style="object-position: 75% 50%"
+    />
+    <Image
+        id="section-6-fg"
+        src={GuyImage}
+        alt="Guy"
+        class="absolute inset-0 w-auto h-[80vh] object-contain z-1 left-1/2 lg:left-3/5 top-1/5 transform -translate-x-1/2 scale-x-[-1]"
+    />
+
+    <div class="absolute inset-0 w-full h-lvh z-2 pointer-events-none">
+        <p
+            class:list={[
+                "text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-minecraft text-black text-left",
+                "absolute top-1/4 left-5/7 md:left-4/6 lg:left-5/6 xl:left-3/4 transform -translate-x-1/2 -translate-y-1/2",
+            ]}
+        >
+            We were<br />not meant to<br />stay still.
+        </p>
+
+        <p
+            class:list={[
+                "text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-minecraft text-white text-left",
+                "absolute top-3/4 left-1/3 lg:left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+            ]}
+        >
+            We were<br />raised<br />on stories.
+        </p>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.set("#section-6", { marginTop: "-100vh" });
+        gsap.set("#section-6-bg", { yPercent: -10, scale: 1.2 });
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#section-6",
+                start: "top top",
+                end: "+=250% bottom",
+                scrub: true,
+                pin: true,
+            },
+        })
+            .to(
+                "#section-6",
+                { opacity: 1, marginTop: 0, duration: 0.5, ease: "none" },
+                0,
+            )
+            .to("body", {
+                backgroundColor: "white",
+                background: "",
+                duration: 0.1,
+                ease: "none",
+            })
+            .to("#section-6-bg", { yPercent: 10, duration: 3, ease: "none" }, 0)
+            .to(
+                "#section-6-fg",
+                {
+                    scaleX: 1.2,
+                    scaleY: -1.2,
+                    duration: 3,
+                    ease: "none",
+                },
+                0,
+            )
+            .to("#section-6", { opacity: 0, duration: 0.5, ease: "none" });
+    });
+</script>

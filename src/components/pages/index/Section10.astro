@@ -1,0 +1,54 @@
+---
+import Image from "@/components/helpers/Image.astro";
+import BGImage from "@/assets/images/pages/index/sec 10/bg.png";
+import FGImage from "@/assets/images/pages/index/sec 10/fg.png";
+---
+
+<section id="section-10" class="relative">
+    <Image
+        src={BGImage}
+        id="section-10-bg"
+        alt="Background"
+        class="absolute inset-0 w-full h-lvh object-cover z-0"
+    />
+    <Image
+        src={FGImage}
+        id="section-10-fg"
+        alt="Foreground"
+        class="absolute inset-0 w-full h-lvh object-cover z-1"
+    />
+
+    <div class="absolute inset-0 w-full h-lvh z-2 pointer-events-none">
+        <h2
+            class="w-[50%] sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-minecraft text-black text-center absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        >
+            And he still stood up<br />That was the lesson<br />Not victory but
+            resilience.
+        </h2>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.set("#section-10", { opacity: 0, marginTop: "-100vh" });
+        gsap.set("#section-10-fg", { scale: 1.2, xPercent: -1 });
+        gsap.set("#section-10-bg", { scale: 1.2, xPercent: 1 });
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#section-10",
+                start: "top top",
+                end: "+=200% bottom",
+                scrub: true,
+                pin: true,
+            },
+        })
+            .to("#section-10", { opacity: 1, duration: 0.5, ease: "none" }, 0)
+            .to(
+                "#section-10-bg",
+                { xPercent: -1, duration: 3, ease: "none" },
+                0,
+            )
+            .to("#section-10-fg", { xPercent: 1, duration: 3, ease: "none" }, 0)
+            .to("#section-10 ", { opacity: 0, duration: 0.5, ease: "none" });
+    });
+</script>

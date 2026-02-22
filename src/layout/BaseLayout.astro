@@ -1,0 +1,48 @@
+---
+import Fonts from "@/components/partials/Fonts.astro";
+import Head, {
+    type Props as HeadProps,
+} from "@/components/partials/Head.astro";
+import "@/styles/global.css";
+
+export interface Props extends HeadProps {
+    class?: string;
+}
+
+const { class: className, ...props } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+    <head>
+        <Head {...props} />
+        <Fonts />
+    </head>
+    <body class:list={[className]}>
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+                <slot />
+            </div>
+        </div>
+
+        <script>
+            import gsap from "gsap";
+            import { ScrollTrigger, ScrollSmoother } from "gsap/all";
+
+            window.gsap = gsap;
+            window.ScrollTrigger = ScrollTrigger;
+
+            gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+            gsap.config({ nullTargetWarn: false });
+
+            ScrollSmoother.create({
+                wrapper: "#smooth-wrapper",
+                content: "#smooth-content",
+                smooth: 1,
+                smoothTouch: 0.05,
+                effects: true,
+                ease: "power1.out",
+            });
+        </script>
+    </body>
+</html>

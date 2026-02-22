@@ -5,6 +5,7 @@
 	--font-sans: var(--font-noto-sans);
 	--font-pokemon-hollow: var(--font-pokemon-hollow);
 	--font-pokemon-solid: var(--font-pokemon-solid);
+	--font-minecraft: var(--font-minecraft);
 }
 
 @layer base {
@@ -26,5 +27,11 @@
 	}
 	.abs-center {
 		@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+	}
+}
+
+@layer components {
+	section {
+		@apply min-h-lvh w-full;
 	}
 }

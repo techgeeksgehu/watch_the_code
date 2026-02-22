@@ -1,7 +1,10 @@
 import { fontProviders } from "astro/config";
-import type { FontFamily } from "node_modules/astro/dist/assets/fonts/types";
+import type {
+	FontFamily,
+	FontProvider,
+} from "node_modules/astro/dist/assets/fonts/types";
 
-const fonts: FontFamily[] = [
+const fonts: FontFamily<FontProvider<never>>[] = [
 	{
 		provider: fontProviders.google(),
 		name: "Noto Sans",
@@ -29,6 +32,33 @@ const fonts: FontFamily[] = [
 				{
 					style: "normal",
 					src: ["./src/assets/fonts/Pokemon Solid.woff2"],
+				},
+			],
+		},
+	},
+	{
+		provider: fontProviders.local(),
+		name: "Mac's Minecraft",
+		cssVariable: "--font-minecraft",
+		options: {
+			variants: [
+				{
+					style: "normal",
+					src: ["./src/assets/fonts/mac's Minecraft.woff2"],
+				},
+				{
+					style: "italic",
+					src: ["./src/assets/fonts/mac's Minecraft Italic.woff2"],
+				},
+				{
+					style: "normal",
+					weight: "700",
+					src: ["./src/assets/fonts/mac's Minecraft Bold.woff2"],
+				},
+				{
+					style: "italic",
+					weight: "700",
+					src: ["./src/assets/fonts/mac's Minecraft Bold Italic.woff2"],
 				},
 			],
 		},

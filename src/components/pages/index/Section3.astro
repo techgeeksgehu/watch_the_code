@@ -1,0 +1,164 @@
+---
+import Image from "@/components/helpers/Image.astro";
+import Img1 from "@/assets/images/pages/index/sec 3/1.png";
+import Img2 from "@/assets/images/pages/index/sec 3/2.png";
+import Img3 from "@/assets/images/pages/index/sec 3/3.png";
+---
+
+<section id="section-3" class="relative overflow-hidden">
+    <div class="h-lvh w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <div class="h-lvh w-full order-1 md:order-2 xl:order-1">
+            <Image
+                src={Img1}
+                alt="Image 1"
+                class="w-full h-full object-contain object-top"
+                id="section-3-img1"
+            />
+        </div>
+        <div class="h-lvh w-full order-2 md:order-4 xl:order-2">
+            <Image
+                src={Img2}
+                alt="Image 2"
+                class="w-full h-full object-contain object-bottom"
+                style="box-shadow: 0 0 10px 10px transparent inset;"
+                id="section-3-img2"
+            />
+        </div>
+        <div class="order-4 md:order-3 xl:order-4"></div>
+        <div
+            class="h-lvh w-full order-3 md:order-1 xl:order-3 relative"
+            id="section-3-img3-wrapper"
+        >
+            <Image
+                src={Img3}
+                alt="Image 3"
+                class="w-full h-full object-contain object-top"
+                id="section-3-img3"
+            />
+            <div
+                class="w-3/4 absolute inset-0 z-1 pointer-events-none top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3"
+            >
+                <h2
+                    class="text-lg sm:text-xl md:text-2xl font-minecraft text-black text-left"
+                >
+                    No one told us that<br />CS had a backbone.<br /><br />That
+                    there are people who built the system we use.<br /><br
+                    />That we are supposed to<br />look under the hood.
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.set("#section-3", { marginTop: "-100vh", opacity: 0 });
+
+        const media = gsap.matchMedia();
+        media.add("(min-width: 1280px)", () => {
+            gsap.set("#section-3-img2", {
+                xPercent: 5,
+                yPercent: 5,
+                scale: 1.2,
+            });
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#section-3",
+                    start: "top top",
+                    end: "+=200% bottom",
+                    scrub: true,
+                    pin: true,
+                },
+            })
+                .to(
+                    "#section-3",
+                    { opacity: 1, duration: 0.5, ease: "none" },
+                    0,
+                )
+                .to(
+                    "#section-3-img1",
+                    { yPercent: 2.5, duration: 3, ease: "none" },
+                    0.1,
+                )
+                .to(
+                    "#section-3-img2",
+                    { xPercent: -5, scale: 1, duration: 3, ease: "none" },
+                    0.1,
+                )
+                .to(
+                    "#section-3-img3",
+                    { yPercent: 10, duration: 3, ease: "none" },
+                    0.1,
+                )
+                .to("#section-3", { opacity: 0, duration: 0.5, ease: "none" });
+        });
+
+        media.add("(min-width: 768px) and (max-width: 1279px)", () => {
+            gsap.set("#section-3-img1", { marginTop: "15vh" });
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#section-3",
+                    start: "top top",
+                    end: "+=200% bottom",
+                    scrub: true,
+                    pin: true,
+                },
+            })
+                .to(
+                    "#section-3",
+                    { opacity: 1, duration: 0.5, ease: "none" },
+                    0,
+                )
+                .to(
+                    "#section-3-img1, #section-3-img2",
+                    {
+                        yPercent: -100,
+                        duration: 3,
+                        ease: "none",
+                    },
+                    0.1,
+                )
+                .to(
+                    "#section-3-img3",
+                    {
+                        yPercent: 10,
+                        duration: 3,
+                        ease: "none",
+                    },
+                    0.1,
+                )
+                .to("#section-3", { opacity: 0, duration: 0.5, ease: "none" });
+        });
+
+        media.add("(max-width: 767px)", () => {
+            gsap.set("#section-3-img1", { marginTop: "15vh" });
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#section-3",
+                    start: "top top",
+                    end: "+=200% bottom",
+                    scrub: true,
+                    pin: true,
+                },
+            })
+                .to(
+                    "#section-3",
+                    { opacity: 1, duration: 0.5, ease: "none" },
+                    0,
+                )
+                .to(
+                    "#section-3-img1, #section-3-img2, #section-3-img3-wrapper",
+                    {
+                        yPercent: -200,
+                        duration: 3,
+                        ease: "none",
+                    },
+                    0.1,
+                )
+                .to("#section-3", { opacity: 0, duration: 0.5, ease: "none" });
+        });
+    });
+</script>

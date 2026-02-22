@@ -1,0 +1,309 @@
+---
+import Image from "@/components/helpers/Image.astro";
+import TVChildrenImage from "@/assets/images/pages/index/sec 7/tv_children.png";
+import TVImage from "@/assets/images/pages/index/sec 7/tv.png";
+import TVNewImage from "@/assets/images/pages/index/sec 7/tv_new.png";
+import TVBGImage from "@/assets/images/pages/index/sec 7/tv_bg.png";
+import BGImage from "@/assets/images/pages/index/sec 7/bg.png";
+import FGImage from "@/assets/images/pages/index/sec 7/fg.png";
+import TopImage from "@/assets/images/pages/index/sec 7/top.png";
+---
+
+<section id="section-7" class="relative overflow-hidden">
+    <Image
+        src={TVBGImage}
+        id="section-7-1-bg"
+        alt="Background"
+        class="scene-1 absolute inset-0 w-full h-lvh object-cover z-0 blur-xs"
+    />
+    <Image
+        src={BGImage}
+        id="section-7-2-bg"
+        alt="Background"
+        class="scene-2 absolute inset-0 w-full h-lvh object-cover z-0 blur-xs"
+    />
+    <Image
+        src={TopImage}
+        id="section-7-2-top"
+        alt="Background"
+        class="scene-2 absolute inset-0 w-full h-50 object-cover z-0 blur-xs"
+    />
+
+    <Image
+        id="section-7-1-fg"
+        src={TVChildrenImage}
+        alt="Children"
+        class="scene-1 absolute inset-x-0 bottom-0 left-1/2 transform -translate-x-1/2 h-100 object-contain object-bottom z-2"
+    />
+    <Image
+        id="section-7-2-fg"
+        src={FGImage}
+        alt="Adults"
+        class="scene-2 absolute inset-x-0 bottom-0 left-1/2 transform -translate-x-1/2 h-100 object-contain object-bottom z-2 scale-x-[-1]"
+    />
+
+    <div
+        class="absolute inset-0 w-full h-lvh z-1 pointer-events-none flex-center"
+        id="section-7-tv-wrapper"
+    >
+        <div class="scene-1 perspective-midrange -mr-[2%] shrink-0">
+            <video
+                id="section-7-tv-left"
+                muted
+                playsinline
+                class="w-100 h-auto aspect-480/380 object-cover transform rotate-y-20"
+            >
+                <source src="/media/tv-left.mp4" type="video/mp4" />
+            </video>
+        </div>
+
+        <div class="relative w-100 h-auto shrink-0">
+            <Image
+                src={TVImage}
+                alt="TV"
+                class="scene-1 w-auto h-80 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-3"
+            />
+            <Image
+                src={TVNewImage}
+                alt="TV New"
+                class="scene-2 w-auto h-80 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-1"
+            />
+            <video
+                id="section-7-tv-video"
+                muted
+                playsinline
+                class="h-75 object-cover absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[58%] z-2 p-5"
+            >
+                <source src="/media/tv.mp4" type="video/mp4" />
+            </video>
+        </div>
+
+        <div class="scene-1 perspective-midrange -ml-[2%] shrink-0">
+            <video
+                id="section-7-tv-right"
+                muted
+                playsinline
+                class="w-100 h-auto aspect-480/380 object-cover transform -rotate-y-20"
+            >
+                <source src="/media/tv-right.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+
+    <div class="scene-1 absolute inset-0 w-full h-lvh z-3 pointer-events-none">
+        <p
+            class:list={[
+                "w-[50%] sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-minecraft text-black text-center",
+                "absolute top-1/6 left-1/4 xl:top-4/5 xl:left-1/5 transform -translate-x-1/2 -translate-y-1/2",
+            ]}
+        >
+            On choosing companion<br />and saying<br />"we'll figure it out".
+        </p>
+
+        <p
+            class:list={[
+                "w-[50%] sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-minecraft text-black text-center",
+                "absolute top-1/6 left-3/4 xl:top-4/5 xl:left-4/5 transform -translate-x-1/2 -translate-y-1/2",
+            ]}
+        >
+            On walking into tall grass<br />without knowing<br />what waited
+            there.
+        </p>
+    </div>
+    <div class="scene-2 absolute inset-0 w-full h-lvh z-3 pointer-events-none">
+        <p
+            class:list={[
+                "w-[50%] sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-minecraft text-black text-center",
+                "absolute top-1/6 left-1/4 xl:top-1/2 xl:left-1/5 transform -translate-x-1/2 -translate-y-1/2",
+            ]}
+        >
+            We grew up<br />believing
+        </p>
+
+        <p
+            class:list={[
+                "w-[50%] sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-minecraft text-black text-center",
+                "absolute top-1/6 left-3/4 xl:top-1/2 xl:left-4/5 transform -translate-x-1/2 -translate-y-1/2",
+            ]}
+        >
+            that friendship<br />was power
+        </p>
+    </div>
+</section>
+
+<script>
+    const videoTv = document.getElementById(
+        "section-7-tv-video",
+    ) as HTMLVideoElement;
+    const videoTvLeft = document.getElementById(
+        "section-7-tv-left",
+    ) as HTMLVideoElement;
+    const videoTvRight = document.getElementById(
+        "section-7-tv-right",
+    ) as HTMLVideoElement;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.set("#section-7", { opacity: 0, marginTop: "-100vh" });
+        gsap.set(".scene-2", { opacity: 0 });
+
+        const tl = gsap
+            .timeline({
+                scrollTrigger: {
+                    trigger: "#section-7",
+                    start: "top top",
+                    end: "+=400% bottom",
+                    scrub: true,
+                    pin: true,
+                },
+            })
+            .to(
+                "#section-7",
+                { opacity: 1, marginTop: 0, duration: 0.5, ease: "none" },
+                0,
+            )
+            .to(
+                "#section-7-1-fg",
+                {
+                    scale: 1.3,
+                    duration: 3,
+                    ease: "none",
+                },
+                0,
+            )
+            .to(
+                "#section-7-tv-wrapper",
+                {
+                    scale: 1.2,
+                    yPercent: +2,
+                    duration: 3,
+                    ease: "none",
+                },
+                0,
+            )
+            .to(
+                "#section-7-tv-left",
+                {
+                    scale: 1.2,
+                    xPercent: -10,
+                    rotateY: 30,
+                    duration: 3,
+                    ease: "none",
+                },
+                0,
+            )
+            .to(
+                "#section-7-tv-right",
+                {
+                    scale: 1.2,
+                    xPercent: 10,
+                    rotateY: -30,
+                    duration: 3,
+                    ease: "none",
+                },
+                0,
+            )
+            .to(
+                "#section-7-1-bg",
+                {
+                    scale: 1.1,
+                    duration: 3,
+                    ease: "none",
+                },
+                0,
+            )
+            .to(".scene-1", {
+                opacity: 0,
+                duration: 0.5,
+                ease: "none",
+            })
+            .to(
+                ".scene-2",
+                {
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: "none",
+                },
+                "<",
+            )
+            .to("#section-7-tv-wrapper", {
+                scale: 1,
+                yPercent: 0,
+                duration: 3,
+                ease: "none",
+            })
+            .from(
+                "#section-7-2-fg",
+                {
+                    scaleX: 1.3,
+                    scaleY: -1.3,
+                    duration: 3,
+                    ease: "none",
+                },
+                "<",
+            )
+            .fromTo(
+                "#section-7-2-top",
+                {
+                    xPercent: -10,
+                    scale: 1.5,
+                    ease: "none",
+                },
+                {
+                    xPercent: 10,
+                    scale: 1.3,
+                    duration: 3,
+                    ease: "none",
+                },
+                "<",
+            )
+            .to("#section-7", { opacity: 0, duration: 0.5, ease: "none" });
+
+        const setupTimeline = (
+            video: HTMLVideoElement,
+            duration: number = 3,
+        ) => {
+            const currentTime = video.duration;
+            tl.to(
+                video,
+                { currentTime: currentTime, duration: duration, ease: "none" },
+                0,
+            );
+        };
+
+        if (videoTv.readyState >= 1) {
+            setupTimeline(videoTv, 6);
+        } else {
+            videoTv.addEventListener(
+                "loadedmetadata",
+                () => setupTimeline(videoTv, 8),
+                {
+                    once: true,
+                },
+            );
+        }
+
+        if (videoTvLeft.readyState >= 1) {
+            setupTimeline(videoTvLeft);
+        } else {
+            videoTvLeft.addEventListener(
+                "loadedmetadata",
+                () => setupTimeline(videoTvLeft),
+                {
+                    once: true,
+                },
+            );
+        }
+
+        if (videoTvRight.readyState >= 1) {
+            setupTimeline(videoTvRight);
+        } else {
+            videoTvRight.addEventListener(
+                "loadedmetadata",
+                () => setupTimeline(videoTvRight),
+                {
+                    once: true,
+                },
+            );
+        }
+    });
+</script>
