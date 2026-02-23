@@ -83,6 +83,8 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
 </section>
 
 <script>
+    import { loadVideo } from "@/lib/helpers";
+
     const video = document.getElementById(
         "section-final-video",
     ) as HTMLVideoElement | null;
@@ -91,7 +93,7 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
         if (!video) return;
 
         gsap.set("#section-final", { opacity: 0, marginTop: "-100vh" });
-        gsap.set(video, { currentTime: 0, opacity: 0 });
+        gsap.set(video, { opacity: 0 });
         gsap.set("#section-final-pre-text", { opacity: 0 });
         gsap.set("#section-final-logo", { opacity: 0 });
         gsap.set("#section-final-header .logo", { opacity: 0 });
@@ -149,24 +151,12 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
                 5,
             );
 
-        const setupTimeline = () => {
-            video.removeAttribute("autoplay");
-            video.currentTime = 0;
-            video.pause();
-
+        loadVideo(video, (video) => {
             tl.to(
                 video,
                 { currentTime: video.duration, duration: 8, ease: "none" },
                 1,
             ).to("#section-final", { opacity: 0, duration: 0.5, ease: "none" });
-        };
-
-        if (video.readyState >= 1) {
-            setupTimeline();
-        } else {
-            video.addEventListener("loadedmetadata", setupTimeline, {
-                once: true,
-            });
-        }
+        });
     });
 </script>

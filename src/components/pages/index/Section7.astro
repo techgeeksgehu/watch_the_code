@@ -50,6 +50,7 @@ import TopImage from "@/assets/images/pages/index/sec 7/top.png";
             <video
                 id="section-7-tv-left"
                 muted
+                autoplay
                 playsinline
                 preload="auto"
                 class="w-100 h-auto aspect-480/380 object-cover transform rotate-y-20"
@@ -72,6 +73,7 @@ import TopImage from "@/assets/images/pages/index/sec 7/top.png";
             <video
                 id="section-7-tv-video"
                 muted
+                autoplay
                 playsinline
                 preload="auto"
                 class="h-75 object-cover absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[58%] z-2 p-5"
@@ -88,6 +90,7 @@ import TopImage from "@/assets/images/pages/index/sec 7/top.png";
             <video
                 id="section-7-tv-right"
                 muted
+                autoplay
                 playsinline
                 preload="auto"
                 class="w-100 h-auto aspect-480/380 object-cover transform -rotate-y-20"
@@ -139,6 +142,8 @@ import TopImage from "@/assets/images/pages/index/sec 7/top.png";
 </section>
 
 <script>
+    import { loadVideo } from "@/lib/helpers";
+
     const videoTv = document.getElementById(
         "section-7-tv-video",
     ) as HTMLVideoElement;
@@ -265,52 +270,28 @@ import TopImage from "@/assets/images/pages/index/sec 7/top.png";
             )
             .to("#section-7", { opacity: 0, duration: 0.5, ease: "none" });
 
-        const setupTimeline = (
-            video: HTMLVideoElement,
-            duration: number = 3,
-        ) => {
-            const currentTime = video.duration;
+        loadVideo(videoTv, (video) => {
             tl.to(
                 video,
-                { currentTime: currentTime, duration: duration, ease: "none" },
+                { currentTime: video.duration, duration: 8, ease: "none" },
                 0,
             );
-        };
+        });
 
-        if (videoTv.readyState >= 1) {
-            setupTimeline(videoTv, 6);
-        } else {
-            videoTv.addEventListener(
-                "loadedmetadata",
-                () => setupTimeline(videoTv, 8),
-                {
-                    once: true,
-                },
+        loadVideo(videoTvLeft, (video) => {
+            tl.to(
+                video,
+                { currentTime: video.duration, duration: 3, ease: "none" },
+                0,
             );
-        }
+        });
 
-        if (videoTvLeft.readyState >= 1) {
-            setupTimeline(videoTvLeft);
-        } else {
-            videoTvLeft.addEventListener(
-                "loadedmetadata",
-                () => setupTimeline(videoTvLeft),
-                {
-                    once: true,
-                },
+        loadVideo(videoTvRight, (video) => {
+            tl.to(
+                video,
+                { currentTime: video.duration, duration: 3, ease: "none" },
+                0,
             );
-        }
-
-        if (videoTvRight.readyState >= 1) {
-            setupTimeline(videoTvRight);
-        } else {
-            videoTvRight.addEventListener(
-                "loadedmetadata",
-                () => setupTimeline(videoTvRight),
-                {
-                    once: true,
-                },
-            );
-        }
+        });
     });
 </script>

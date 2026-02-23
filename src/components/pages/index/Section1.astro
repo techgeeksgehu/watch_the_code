@@ -50,7 +50,11 @@ import Image from "@/components/helpers/Image.astro";
             )
             .to("body", {
                 backgroundColor: "white",
-                background: "url('/media/bg.png') no-repeat fixed center/cover",
+                backgroundImage: "url('/media/bg.png')",
+                backgroundAttachment: "fixed",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
                 duration: 0.1,
                 ease: "none",
             })

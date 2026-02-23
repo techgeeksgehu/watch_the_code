@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+html,
+body {
+	height: 100%; /* Critical for percentage heights */
+	margin: 0; /* Remove default margin */
+}
+
 @theme inline {
 	--font-sans: var(--font-noto-sans);
 	--font-pokemon-hollow: var(--font-pokemon-hollow);
