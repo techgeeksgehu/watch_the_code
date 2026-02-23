@@ -25,6 +25,8 @@ const { class: className, ...props } = Astro.props;
             </div>
         </div>
 
+        <slot name="outside" />
+
         <script>
             import gsap from "gsap";
             import {
@@ -35,6 +37,7 @@ const { class: className, ...props } = Astro.props;
 
             window.gsap = gsap;
             window.ScrollTrigger = ScrollTrigger;
+            window.ScrollSmoother = ScrollSmoother;
 
             gsap.registerPlugin(ScrollSmoother, ScrollTrigger, TextPlugin);
             gsap.config({ nullTargetWarn: false });
