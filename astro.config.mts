@@ -6,7 +6,7 @@ import fonts from "./fonts";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://watchthecode.gehu.in",
+	site: "https://hack.gehu.in",
 	trailingSlash: "always",
 	cacheDir: "./cache/astro",
 	compressHTML: true,
