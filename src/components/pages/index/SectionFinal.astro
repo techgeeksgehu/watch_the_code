@@ -8,7 +8,8 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
 <section id="section-final" class="relative bg-[#1b72d2]">
     <div class="absolute h-full w-full flex-center" id="section-final-pre-text">
         <h2
-            class="font-sans text-white text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+            id="section-final-pretext"
+            class="font-minecraft text-white text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
         >
             Tech Geeks GEHU<br />presents
         </h2>
@@ -21,20 +22,37 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
         class="absolute inset-0 h-full w-full object-cover"
         style="object-position: 75% 50%"
     >
+        <!-- 480p -->
         <source
-            src="/media/bg-480.mp4"
+            src="/media/wtc/video-480-hevc.mp4"
+            media="(max-width: 480px)"
+            type="video/mp4; codecs=hevc"
+        />
+        <source
+            src="/media/wtc/video-480-h264.mp4"
             media="(max-width: 480px)"
             type="video/mp4"
         />
-
+        <!-- 720p -->
         <source
-            src="/media/bg-720.mp4"
-            media="(min-width: 481px) and (max-width: 768px)"
-            type="video/mp4"
+            src="/media/wtc/video-720-hevc.mp4"
+            media="(min-width: 481px) and (max-width: 1080px)"
+            type="video/mp4; codecs=hevc"
         />
         <source
-            src="/media/bg-1080.mp4"
-            media="(min-width: 769px)"
+            src="/media/wtc/video-720-h264.mp4"
+            media="(min-width: 481px) and (max-width: 1080px)"
+            type="video/mp4"
+        />
+        <!-- 1080p -->
+        <source
+            src="/media/wtc/video-1080-hevc.mp4"
+            media="(min-width: 1081px)"
+            type="video/mp4; codecs=hevc"
+        />
+        <source
+            src="/media/wtc/video-1080-h264.mp4"
+            media="(min-width: 1081px)"
             type="video/mp4"
         />
     </video>

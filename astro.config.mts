@@ -1,26 +1,29 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import playformCompress from "@playform/compress";
 import icon from "astro-icon";
 import fonts from "./fonts";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://watchthecode.gehu.in",
-	compressHTML: true,
 	trailingSlash: "always",
-	cacheDir: "./.astro/cache",
-	vite: {
-		plugins: [tailwindcss()],
+	cacheDir: "./cache/astro",
+	compressHTML: true,
+	integrations: [icon()],
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: "viewport",
 	},
-	integrations: [
-		icon(),
-		playformCompress({
-			Image: false,
-		}),
-	],
 	experimental: {
 		fonts,
+		svgo: true,
+		clientPrerender: true,
+		contentIntellisense: true,
+	},
+	vite: {
+		cacheDir: "./cache/vite",
+		clearScreen: true,
+		plugins: [tailwindcss()],
 	},
 });

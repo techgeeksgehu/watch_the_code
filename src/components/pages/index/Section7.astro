@@ -76,7 +76,11 @@ import TopImage from "@/assets/images/pages/index/sec 7/top.png";
                 preload="auto"
                 class="h-75 object-cover absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[58%] z-2 p-5"
             >
-                <source src="/media/tv.mp4" type="video/mp4" />
+                <source
+                    src="/media/tv-hevc.mp4"
+                    type="video/mp4; codecs=hevc"
+                />
+                <source src="/media/tv-h264.mp4" type="video/mp4" />
             </video>
         </div>
 
