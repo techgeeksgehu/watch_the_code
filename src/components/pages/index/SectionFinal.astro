@@ -19,6 +19,7 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
         preload="auto"
         playsinline
         muted
+        autoplay
         class="absolute inset-0 h-full w-full object-cover"
         style="object-position: 75% 50%"
     >
@@ -149,10 +150,13 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
             );
 
         const setupTimeline = () => {
-            const duration = video.duration;
+            video.removeAttribute("autoplay");
+            video.currentTime = 0;
+            video.pause();
+
             tl.to(
                 video,
-                { currentTime: duration, duration: 8, ease: "none" },
+                { currentTime: video.duration, duration: 8, ease: "none" },
                 1,
             ).to("#section-final", { opacity: 0, duration: 0.5, ease: "none" });
         };
