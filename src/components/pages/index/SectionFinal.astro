@@ -6,12 +6,14 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
 ---
 
 <section id="section-final" class="relative bg-[#1b72d2]">
-    <div class="absolute h-full w-full flex-center" id="section-final-pre-text">
+    <div
+        class="absolute h-full w-full flex-center"
+        id="section-final-pretext-wrapper"
+    >
         <h2
             id="section-final-pretext"
             class="font-minecraft text-white text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
         >
-            Tech Geeks GEHU<br />presents
         </h2>
     </div>
     <video
@@ -94,7 +96,6 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
 
         gsap.set("#section-final", { opacity: 0, marginTop: "-100vh" });
         gsap.set(video, { opacity: 0 });
-        gsap.set("#section-final-pre-text", { opacity: 0 });
         gsap.set("#section-final-logo", { opacity: 0 });
         gsap.set("#section-final-header .logo", { opacity: 0 });
 
@@ -103,7 +104,7 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
             scrollTrigger: {
                 trigger: "#section-final",
                 start: "top top",
-                end: "+=300% top",
+                end: "+=350% top",
                 scrub: true,
                 pin: true,
             },
@@ -111,19 +112,14 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
 
         tl.to("#section-final", { opacity: 1, duration: 0.5, ease: "none" }, 0)
             .to(
-                "#section-final-pre-text",
-                { opacity: 1, duration: 0.5, ease: "none" },
+                "#section-final-pretext",
+                { text: "Tech Geeks presents", duration: 1.5, ease: "none" },
                 0.1,
             )
             .to(
-                "#section-final-pre-text",
-                { scale: 1.01, duration: 0.9, ease: "none" },
-                0.1,
-            )
-            .to(
-                "#section-final-pre-text",
+                "#section-final-pretext-wrapper",
                 { opacity: 0, duration: 0.5, ease: "none" },
-                1,
+                2,
             )
             .to(
                 video,
@@ -131,7 +127,7 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
                     opacity: 1,
                     duration: 1,
                 },
-                1,
+                2,
             )
             .to(
                 "#section-final-header .logo",
@@ -140,7 +136,7 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
                     duration: 1,
                     stagger: 1,
                 },
-                2,
+                3,
             )
             .to(
                 "#section-final-logo",
@@ -156,7 +152,7 @@ import TechGeeks from "@/assets/images/tech_geeks_mono.svg";
                 video,
                 { currentTime: video.duration, duration: 8, ease: "none" },
                 1,
-            ).to("#section-final", { opacity: 0, duration: 0.5, ease: "none" });
+            );
         });
     });
 </script>

@@ -21,6 +21,7 @@ import Image from "@/components/helpers/Image.astro";
     <div class="absolute inset-0 z-2 flex-center pointer-events-none">
         <h2
             class="text-4xl md:text-4xl font-minecraft text-white text-left md:-translate-x-1/2 -translate-y-24 md:-translate-y-48"
+            id="section-1-text"
         >
             Should I<br />give up<br />at this point?
         </h2>
@@ -29,7 +30,7 @@ import Image from "@/components/helpers/Image.astro";
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        gsap.set("#section-1", { opacity: 0 });
+        gsap.set("#section-1", { opacity: 0, marginTop: "-100vh" });
         gsap.set("#section-1-bg", { xPercent: -12, scale: 1.15 });
 
         gsap.timeline({
@@ -41,13 +42,15 @@ import Image from "@/components/helpers/Image.astro";
                 pin: true,
             },
         })
-            .to("#section-1", { opacity: 1, duration: 0.5, ease: "none" }, "<")
-            .to("#section-1-fg", { scale: 1, duration: 3, ease: "none" }, "<")
-            .to(
-                "#section-1-bg",
-                { xPercent: 12, duration: 3, ease: "none" },
-                "<",
+            .to("#section-1", { opacity: 1, duration: 0.5, ease: "none" }, 0)
+            .fromTo(
+                "#section-1-text",
+                { opacity: 0 },
+                { opacity: 1, duration: 0.5, ease: "none" },
+                0.5,
             )
+            .to("#section-1-fg", { scale: 1, duration: 3, ease: "none" }, 0)
+            .to("#section-1-bg", { xPercent: 12, duration: 3, ease: "none" }, 0)
             .to("body", {
                 backgroundColor: "white",
                 backgroundImage: "url('/media/bg.png')",
@@ -58,6 +61,6 @@ import Image from "@/components/helpers/Image.astro";
                 duration: 0.1,
                 ease: "none",
             })
-            .to("#section-1 ", { opacity: 0, duration: 0.5, ease: "none" });
+            .to("#section-1", { opacity: 0, duration: 0.5, ease: "none" });
     });
 </script>

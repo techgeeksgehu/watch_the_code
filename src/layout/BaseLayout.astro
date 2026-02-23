@@ -27,12 +27,16 @@ const { class: className, ...props } = Astro.props;
 
         <script>
             import gsap from "gsap";
-            import { ScrollTrigger, ScrollSmoother } from "gsap/all";
+            import {
+                ScrollTrigger,
+                ScrollSmoother,
+                TextPlugin,
+            } from "gsap/all";
 
             window.gsap = gsap;
             window.ScrollTrigger = ScrollTrigger;
 
-            gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+            gsap.registerPlugin(ScrollSmoother, ScrollTrigger, TextPlugin);
             gsap.config({ nullTargetWarn: false });
 
             ScrollSmoother.create({

@@ -14,6 +14,7 @@ import Section9 from "@/components/pages/index/Section9.astro";
 import Section10 from "@/components/pages/index/Section10.astro";
 import Section11 from "@/components/pages/index/Section11.astro";
 import Section12 from "@/components/pages/index/Section12.astro";
+import Section0 from "@/components/pages/index/Section0.astro";
 ---
 
 <BaseLayout class="bg-[#b4c7ce]">
@@ -23,6 +24,7 @@ import Section12 from "@/components/pages/index/Section12.astro";
 	</div>
 
 	<main>
+		<Section0 />
 		<Section1 />
 		<Section2 />
 		<Section3 />
@@ -54,6 +56,8 @@ import Section12 from "@/components/pages/index/Section12.astro";
 		overlay.classList.add("loaded");
 		document.body.classList.remove("loading");
 		setTimeout(() => overlay.remove(), 600);
+		// fire a custom event in case any component needs to know when loading is done
+		window.dispatchEvent(new CustomEvent("loader:done"));
 	}
 
 	function tryHideLoader() {
