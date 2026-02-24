@@ -27,72 +27,71 @@ import Img2 from "@/assets/images/pages/index/sec 5/2.png";
 </section>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        gsap.set("#section-5", { marginTop: "-100vh", opacity: 0 });
+    document.addEventListener(
+        "astro:page-load",
+        () => {
+            gsap.set("#section-5", { marginTop: "-100vh", opacity: 0 });
 
-        const media = gsap.matchMedia();
-
-        media.add("(min-width: 768px)", () => {
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#section-5",
-                    start: "top top",
-                    end: "+=200% bottom",
-                    scrub: true,
-                    pin: true,
+            const mm = gsap.matchMedia();
+            mm.add(
+                {
+                    isDesktop: "(min-width: 1280px)",
+                    isTablet: "(min-width: 768px) and (max-width: 1279px)",
+                    isMobile: "(max-width: 767px)",
                 },
-            })
-                .to(
-                    "#section-5",
-                    { opacity: 1, duration: 0.5, ease: "none" },
-                    0,
-                )
-                .to(
-                    "#section-5-img1",
-                    {
-                        yPercent: 5,
+                (context) => {
+                    const tl = gsap
+                        .timeline({
+                            scrollTrigger: {
+                                trigger: "#section-5",
+                                start: "top top",
+                                end: "+=200% bottom",
+                                scrub: true,
+                                pin: true,
+                            },
+                        })
+                        .to(
+                            "#section-5",
+                            { opacity: 1, duration: 0.5, ease: "none" },
+                            0,
+                        );
 
-                        duration: 3,
-                        ease: "none",
-                    },
-                    0.1,
-                )
-                .to(
-                    "#section-5-img2",
-                    {
-                        yPercent: -10,
-                        duration: 3,
-                        scale: 0.8,
-                        ease: "none",
-                    },
-                    0.1,
-                );
-        });
-
-        media.add("(max-width: 767px)", () => {
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#section-5",
-                    start: "top top",
-                    end: "+=200% bottom",
-                    scrub: true,
-                    pin: true,
+                    if (
+                        context.conditions?.isDesktop ||
+                        context.conditions?.isTablet
+                    ) {
+                        tl.to(
+                            "#section-5-img1",
+                            {
+                                yPercent: 5,
+                                duration: 3,
+                                ease: "none",
+                            },
+                            0.1,
+                        ).to(
+                            "#section-5-img2",
+                            {
+                                yPercent: -10,
+                                duration: 3,
+                                scale: 0.8,
+                                ease: "none",
+                            },
+                            0.1,
+                        );
+                    } else {
+                        tl.to(
+                            "#section-5-img1, #section-5-img2",
+                            {
+                                yPercent: -200,
+                                duration: 3,
+                                ease: "none",
+                            },
+                            0.1,
+                        );
+                    }
                 },
-            })
-                .to(
-                    "#section-5",
-                    { opacity: 1, duration: 0.5, ease: "none" },
-                    0,
-                )
-                .to(
-                    "#section-5-img1, #section-5-img2",
-                    {
-                        yPercent: -200,
-                        duration: 3,
-                        ease: "none",
-                    },
-                    0.1,
-                );
-        });
-    });
+            );
+        },
+        { once: false },
+    );
 </script>

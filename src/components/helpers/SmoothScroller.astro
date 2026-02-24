@@ -1,0 +1,28 @@
+<div id="smooth-wrapper">
+    <div id="smooth-content">
+        <slot />
+    </div>
+</div>
+
+<script>
+    import gsap from "gsap";
+    import { ScrollTrigger, ScrollSmoother, TextPlugin } from "gsap/all";
+
+    window.gsap = gsap;
+    window.ScrollTrigger = ScrollTrigger;
+    window.ScrollSmoother = ScrollSmoother;
+
+    gsap.registerPlugin(ScrollSmoother, ScrollTrigger, TextPlugin);
+    gsap.config({ nullTargetWarn: false });
+
+    ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1,
+        smoothTouch: 0.05,
+        effects: true,
+        ease: "power1.out",
+    });
+
+    window.dispatchEvent(new CustomEvent("gsap:ready"));
+</script>

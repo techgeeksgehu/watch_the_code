@@ -29,81 +29,93 @@ import Img2 from "@/assets/images/pages/index/sec 12/2.png";
 </section>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        gsap.set("#section-12", { marginTop: "-100vh", opacity: 0 });
+    document.addEventListener(
+        "astro:page-load",
+        () => {
+            gsap.set("#section-12", { marginTop: "-100vh", opacity: 0 });
 
-        const media = gsap.matchMedia();
+            const media = gsap.matchMedia();
 
-        media.add("(min-width: 768px)", () => {
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#section-12",
-                    start: "top top",
-                    end: "+=200% bottom",
-                    scrub: true,
-                    pin: true,
-                },
-            })
-                .to(
-                    "#section-12",
-                    { opacity: 1, duration: 0.5, ease: "none" },
-                    0,
-                )
-                .to(
-                    "#section-12-img1",
-                    {
-                        yPercent: 5,
-                        duration: 3,
-                        ease: "none",
+            media.add("(min-width: 768px)", () => {
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: "#section-12",
+                        start: "top top",
+                        end: "+=200% bottom",
+                        scrub: true,
+                        pin: true,
                     },
-                    0.1,
-                )
-                .to(
-                    "#section-12-img2",
-                    {
-                        duration: 3,
-                        scale: 1.2,
+                })
+                    .to(
+                        "#section-12",
+                        { opacity: 1, duration: 0.5, ease: "none" },
+                        0,
+                    )
+                    .to(
+                        "#section-12-img1",
+                        {
+                            yPercent: 5,
+                            duration: 3,
+                            ease: "none",
+                        },
+                        0.1,
+                    )
+                    .to(
+                        "#section-12-img2",
+                        {
+                            duration: 3,
+                            scale: 1.2,
+                            ease: "none",
+                        },
+                        0.1,
+                    )
+                    .to("#section-12", {
+                        opacity: 0,
+                        duration: 0.5,
                         ease: "none",
-                    },
-                    0.1,
-                )
-                .to("#section-12", { opacity: 0, duration: 0.5, ease: "none" });
-        });
+                    });
+            });
 
-        media.add("(max-width: 767px)", () => {
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#section-12",
-                    start: "top top",
-                    end: "+=200% bottom",
-                    scrub: true,
-                    pin: true,
-                },
-            })
-                .to(
-                    "#section-12",
-                    { opacity: 1, duration: 0.5, ease: "none" },
-                    0,
-                )
-                .to(
-                    "#section-12-img2",
-                    {
-                        scale: 1.2,
-                        duration: 3,
-                        ease: "none",
+            media.add("(max-width: 767px)", () => {
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: "#section-12",
+                        start: "top top",
+                        end: "+=200% bottom",
+                        scrub: true,
+                        pin: true,
                     },
-                    0,
-                )
-                .to(
-                    "#section-12-img1",
-                    {
-                        scale: 0.9,
-                        duration: 3,
+                })
+                    .to(
+                        "#section-12",
+                        { opacity: 1, duration: 0.5, ease: "none" },
+                        0,
+                    )
+                    .to(
+                        "#section-12-img2",
+                        {
+                            scale: 1.2,
+                            duration: 3,
+                            ease: "none",
+                        },
+                        0,
+                    )
+                    .to(
+                        "#section-12-img1",
+                        {
+                            scale: 0.9,
+                            duration: 3,
+                            ease: "none",
+                        },
+                        0,
+                    )
+                    .to("#section-12", {
+                        opacity: 0,
+                        duration: 0.5,
                         ease: "none",
-                    },
-                    0,
-                )
-                .to("#section-12", { opacity: 0, duration: 0.5, ease: "none" });
-        });
-    });
+                    });
+            });
+        },
+        { once: false },
+    );
 </script>

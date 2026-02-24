@@ -12,7 +12,6 @@ const { title, description = siteConfig.description } = Astro.props;
 const pageTitle = title ? `${title} | ${siteConfig.title}` : siteConfig.title;
 
 const ogImageUrl = new URL(siteConfig.ogImage, Astro.site);
-// const ogImageSquareUrl = new URL(siteConfig.ogImageSquare, Astro.site);
 ---
 
 <meta charset="UTF-8" />
@@ -52,13 +51,6 @@ const ogImageUrl = new URL(siteConfig.ogImage, Astro.site);
 <meta property="og:image:height" content="400" />
 <meta property="og:image:alt" content="Desktop Cover" />
 
-<!-- <meta property="og:image" content={ogImageSquareUrl} />
-<meta property="og:image:secure_url" content={ogImageSquareUrl} />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="400" />
-<meta property="og:image:height" content="400" />
-<meta property="og:image:alt" content="Mobile Cover" /> -->
-
 <!-- Favicon -->
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -66,4 +58,4 @@ const ogImageUrl = new URL(siteConfig.ogImage, Astro.site);
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<!-- <ClientRouter /> -->
+<ClientRouter />

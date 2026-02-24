@@ -2,6 +2,7 @@
 import BaseLayout from "@/layout/BaseLayout.astro";
 import SectionFinal from "@/components/pages/index/SectionFinal.astro";
 
+import Section0 from "@/components/pages/index/Section0.astro";
 import Section1 from "@/components/pages/index/Section1.astro";
 import Section2 from "@/components/pages/index/Section2.astro";
 import Section3 from "@/components/pages/index/Section3.astro";
@@ -14,7 +15,10 @@ import Section9 from "@/components/pages/index/Section9.astro";
 import Section10 from "@/components/pages/index/Section10.astro";
 import Section11 from "@/components/pages/index/Section11.astro";
 import Section12 from "@/components/pages/index/Section12.astro";
-import Section0 from "@/components/pages/index/Section0.astro";
+
+import SkipButton from "@/components/pages/index/SkipButton.svelte";
+import TopButton from "@/components/pages/index/TopButton.svelte";
+import Loader from "@/components/pages/index/Loader.svelte";
 ---
 
 <BaseLayout class="bg-[#b4c7ce]">
@@ -35,233 +39,14 @@ import Section0 from "@/components/pages/index/Section0.astro";
 		<SectionFinal />
 	</main>
 
-	<Fragment slot="outside">
-		<div id="loader-overlay">
-			<div id="loader-spinner"></div>
-			<p id="loader-text">Loading...</p>
-		</div>
-		<div class="fixed right-2 top-2">
-			<button
-				id="skip-button"
-				class="bg-white text-gray-800 font-minecraft px-3 py-1 rounded-md text-sm md:text-lg z-10 cursor-pointer hover:scale-105"
-			>
-				Skip &gt;
-			</button>
-		</div>
+	<Fragment slot="outside-smooth-scroll">
+		<Loader client:load />
 
+		<div class="fixed right-2 top-2">
+			<SkipButton client:load />
+		</div>
 		<div class="fixed left-2 bottom-2">
-			<button
-				id="top-button"
-				class="bg-white text-gray-800 font-minecraft px-3 py-1 rounded-md text-sm md:text-lg z-10 cursor-pointer hover:scale-105 opacity-0"
-			>
-				^ Top
-			</button>
+			<TopButton client:load />
 		</div>
 	</Fragment>
-
-	<script>
-		document
-			.getElementById("skip-button")
-			?.addEventListener("click", () => {
-				window.scrollTo({
-					top: document.body.scrollHeight,
-					behavior: "smooth",
-				});
-			});
-
-		document.getElementById("top-button")?.addEventListener("click", () => {
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth",
-			});
-		});
-
-		// document
-		// 	.getElementById("skip-button")
-		// 	?.addEventListener("click", () => {
-		// 		const smoother = window.ScrollSmoother?.get?.();
-		// 		const ST = window.ScrollTrigger;
-
-		// 		if (smoother && ST && typeof smoother.scrollTo === "function") {
-		// 			const st = ST.getById("section-final-pin");
-		// 			if (st) {
-		// 				const targetY = st.start + (st.end - st.start) * 0.2;
-		// 				// or: const targetY = st.start + 100; // 100px into the pin
-		// 				smoother.scrollTo(targetY, true);
-		// 				return;
-		// 			}
-		// 		}
-		// 		document
-		// 			.getElementById("section-final")
-		// 			?.scrollIntoView({ behavior: "smooth" });
-		// 	});
-	</script>
-
-	<script>
-		// Move loader outside #smooth-wrapper so `position: fixed` works
-		// (ScrollSmoother applies transforms that break fixed positioning)
-		const loaderEl = document.getElementById("loader-overlay");
-		if (loaderEl) document.body.appendChild(loaderEl);
-
-		let mediaReady = false;
-		let gsapReady = false;
-
-		function hideLoader() {
-			const overlay = document.getElementById("loader-overlay");
-			if (!overlay) return;
-			overlay.classList.add("loaded");
-			document.body.classList.remove("loading");
-			setTimeout(() => overlay.remove(), 600);
-			// fire a custom event in case any component needs to know when loading is done
-			window.dispatchEvent(new CustomEvent("loader:done"));
-		}
-
-		function tryHideLoader() {
-			if (mediaReady && gsapReady) {
-				hideLoader();
-			}
-		}
-
-		// --- Wait for GSAP / ScrollSmoother ---
-		function onGsapReady() {
-			gsapReady = true;
-			const loaderText = document.getElementById("loader-text");
-			if (loaderText && mediaReady) {
-				loaderText.textContent = "Ready!";
-			}
-			tryHideLoader();
-		}
-
-		if ((window as any).__gsapReady) {
-			onGsapReady();
-		} else {
-			window.addEventListener("gsap:ready", onGsapReady, { once: true });
-		}
-
-		// --- Wait for all media assets ---
-		const pendingAssets = new Set<HTMLElement>();
-
-		function waitForMedia() {
-			const images = Array.from(document.querySelectorAll("img"));
-			const totalAssets = images.length;
-			let loadedAssets = 0;
-
-			const loaderText = document.getElementById("loader-text");
-
-			// Track all assets as pending
-			for (const el of images) pendingAssets.add(el);
-
-			function markLoaded(el: HTMLElement) {
-				pendingAssets.delete(el);
-				loadedAssets++;
-				if (loaderText) {
-					const pct = Math.round((loadedAssets / totalAssets) * 100);
-					loaderText.textContent = `Loading… ${pct}%`;
-				}
-				if (loadedAssets >= totalAssets) {
-					mediaReady = true;
-					tryHideLoader();
-				}
-			}
-
-			if (totalAssets === 0) {
-				mediaReady = true;
-				tryHideLoader();
-				return;
-			}
-
-			for (const img of images) {
-				if (img.complete && img.naturalWidth > 0) {
-					markLoaded(img);
-				} else {
-					img.addEventListener("load", () => markLoaded(img), {
-						once: true,
-					});
-					img.addEventListener("error", () => markLoaded(img), {
-						once: true,
-					});
-				}
-			}
-		}
-
-		document.body.classList.add("loading");
-
-		if (document.readyState === "complete") {
-			waitForMedia();
-		} else {
-			window.addEventListener("load", waitForMedia, { once: true });
-		}
-
-		// Safety timeout — don't block forever
-		setTimeout(() => {
-			if (!mediaReady || !gsapReady) {
-				if (!gsapReady) console.warn("[Loader timeout] GSAP not ready");
-				if (pendingAssets.size > 0) {
-					console.warn(
-						`[Loader timeout] ${pendingAssets.size} asset(s) still loading:`,
-					);
-					for (const el of pendingAssets) {
-						if (el instanceof HTMLImageElement) {
-							console.warn(
-								"  IMG:",
-								el.src || el.currentSrc || el.outerHTML,
-							);
-						} else if (el instanceof HTMLVideoElement) {
-							const src =
-								el.src ||
-								el.querySelector("source")?.src ||
-								el.outerHTML.slice(0, 200);
-							console.warn("  VIDEO:", src);
-						}
-					}
-				}
-				hideLoader();
-			}
-		}, 15000);
-	</script>
-
-	<style>
-		#loader-overlay {
-			position: fixed;
-			inset: 0;
-			z-index: 9999;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			gap: 1rem;
-			background: #b4c7ce;
-			transition: opacity 0.5s ease;
-		}
-
-		#loader-overlay.loaded {
-			opacity: 0;
-			pointer-events: none;
-		}
-
-		#loader-spinner {
-			width: 56px;
-			height: 56px;
-			border: 5px solid rgba(0, 0, 0, 0.15);
-			border-top-color: #333;
-			border-radius: 50%;
-			animation: spin 0.8s linear infinite;
-		}
-
-		#loader-text {
-			font-size: 0.875rem;
-			color: #444;
-			letter-spacing: 0.05em;
-		}
-
-		@keyframes spin {
-			to {
-				transform: rotate(360deg);
-			}
-		}
-
-		:global(body.loading) {
-			overflow: hidden;
-		}
-	</style>
 </BaseLayout>

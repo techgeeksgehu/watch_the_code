@@ -29,38 +29,50 @@ import Image from "@/components/helpers/Image.astro";
 </section>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        gsap.set("#section-1", { opacity: 0, marginTop: "-100vh" });
-        gsap.set("#section-1-bg", { xPercent: -12, scale: 1.15 });
+    document.addEventListener(
+        "astro:page-load",
+        () => {
+            gsap.set("#section-1", { opacity: 0, marginTop: "-100vh" });
+            gsap.set("#section-1-bg", { xPercent: -12, scale: 1.15 });
 
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: "#section-1",
-                start: "top top",
-                end: "+=200% bottom",
-                scrub: true,
-                pin: true,
-            },
-        })
-            .to("#section-1", { opacity: 1, duration: 0.5, ease: "none" }, 0)
-            .fromTo(
-                "#section-1-text",
-                { opacity: 0 },
-                { opacity: 1, duration: 0.5, ease: "none" },
-                0.5,
-            )
-            .to("#section-1-fg", { scale: 1, duration: 3, ease: "none" }, 0)
-            .to("#section-1-bg", { xPercent: 12, duration: 3, ease: "none" }, 0)
-            .to("body", {
-                backgroundColor: "white",
-                backgroundImage: "url('/media/bg.png')",
-                backgroundAttachment: "fixed",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                duration: 0.1,
-                ease: "none",
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#section-1",
+                    start: "top top",
+                    end: "+=200% bottom",
+                    scrub: true,
+                    pin: true,
+                },
             })
-            .to("#section-1", { opacity: 0, duration: 0.5, ease: "none" });
-    });
+                .to(
+                    "#section-1",
+                    { opacity: 1, duration: 0.5, ease: "none" },
+                    0,
+                )
+                .fromTo(
+                    "#section-1-text",
+                    { opacity: 0 },
+                    { opacity: 1, duration: 0.5, ease: "none" },
+                    0.5,
+                )
+                .to("#section-1-fg", { scale: 1, duration: 3, ease: "none" }, 0)
+                .to(
+                    "#section-1-bg",
+                    { xPercent: 12, duration: 3, ease: "none" },
+                    0,
+                )
+                .to("body", {
+                    backgroundColor: "white",
+                    backgroundImage: "url('/media/bg.png')",
+                    backgroundAttachment: "fixed",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                    duration: 0.1,
+                    ease: "none",
+                })
+                .to("#section-1", { opacity: 0, duration: 0.5, ease: "none" });
+        },
+        { once: false },
+    );
 </script>

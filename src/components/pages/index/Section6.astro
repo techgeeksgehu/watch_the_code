@@ -41,41 +41,49 @@ import BGImage from "@/assets/images/pages/index/sec 6/bg.png";
 </section>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        gsap.set("#section-6", { marginTop: "-100vh" });
-        gsap.set("#section-6-bg", { yPercent: -10, scale: 1.2 });
+    document.addEventListener(
+        "astro:page-load",
+        () => {
+            gsap.set("#section-6", { marginTop: "-100vh" });
+            gsap.set("#section-6-bg", { yPercent: -10, scale: 1.2 });
 
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: "#section-6",
-                start: "top top",
-                end: "+=250% bottom",
-                scrub: true,
-                pin: true,
-            },
-        })
-            .to(
-                "#section-6",
-                { opacity: 1, marginTop: 0, duration: 0.5, ease: "none" },
-                0,
-            )
-            .to("body", {
-                backgroundColor: "white",
-                background: "",
-                duration: 0.1,
-                ease: "none",
-            })
-            .to("#section-6-bg", { yPercent: 10, duration: 3, ease: "none" }, 0)
-            .to(
-                "#section-6-fg",
-                {
-                    scaleX: 1.2,
-                    scaleY: -1.2,
-                    duration: 3,
-                    ease: "none",
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#section-6",
+                    start: "top top",
+                    end: "+=250% bottom",
+                    scrub: true,
+                    pin: true,
                 },
-                0,
-            )
-            .to("#section-6", { opacity: 0, duration: 0.5, ease: "none" });
-    });
+            })
+                .to(
+                    "#section-6",
+                    { opacity: 1, marginTop: 0, duration: 0.5, ease: "none" },
+                    0,
+                )
+                .to("body", {
+                    backgroundColor: "white",
+                    background: "",
+                    duration: 0.1,
+                    ease: "none",
+                })
+                .to(
+                    "#section-6-bg",
+                    { yPercent: 10, duration: 3, ease: "none" },
+                    0,
+                )
+                .to(
+                    "#section-6-fg",
+                    {
+                        scaleX: 1.2,
+                        scaleY: -1.2,
+                        duration: 3,
+                        ease: "none",
+                    },
+                    0,
+                )
+                .to("#section-6", { opacity: 0, duration: 0.5, ease: "none" });
+        },
+        { once: false },
+    );
 </script>
