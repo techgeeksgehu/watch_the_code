@@ -24,6 +24,6 @@ let text: HTMLSpanElement;
     }}
 >
     <span bind:this={text} class="inline-block">
-        Explore
+        Register
     </span>
 </a>
