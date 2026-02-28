@@ -1,4 +1,6 @@
 <script lang="ts">
+import { gsap } from "@/lib/gsap";
+
 let btn: HTMLButtonElement;
 let icon: HTMLSpanElement;
 let text: HTMLSpanElement;

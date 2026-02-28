@@ -5,15 +5,7 @@
 </div>
 
 <script>
-    import gsap from "gsap";
-    import { ScrollTrigger, ScrollSmoother, TextPlugin } from "gsap/all";
-
-    window.gsap = gsap;
-    window.ScrollTrigger = ScrollTrigger;
-    window.ScrollSmoother = ScrollSmoother;
-
-    gsap.registerPlugin(ScrollSmoother, ScrollTrigger, TextPlugin);
-    gsap.config({ nullTargetWarn: false });
+    import { ScrollTrigger, ScrollSmoother } from "@/lib/gsap";
 
     ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
@@ -22,6 +14,15 @@
         smoothTouch: 0.05,
         effects: true,
         ease: "power1.out",
+    });
+
+    // Recalculate all ScrollTrigger positions after every resource
+    // (images, fonts, video metadata) has finished loading. Without this,
+    // later sections whose trigger offsets depend on the fully-laid-out
+    // page may end up with wrong start/end values and never animate.
+    window.addEventListener("load", () => {
+        ScrollSmoother.get()?.scrollTrigger?.refresh();
+        ScrollTrigger.refresh(true);
     });
 
     window.dispatchEvent(new CustomEvent("gsap:ready"));

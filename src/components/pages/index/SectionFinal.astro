@@ -93,6 +93,7 @@ import ExploreButton from "./ExploreButton.svelte";
 </section>
 
 <script>
+    import { gsap } from "@/lib/gsap";
     import { loadVideo } from "@/lib/helpers";
 
     const video = document.getElementById(
@@ -115,6 +116,7 @@ import ExploreButton from "./ExploreButton.svelte";
                 scrub: true,
                 pin: true,
                 id: "section-final-pin",
+                invalidateOnRefresh: true,
             },
         });
 

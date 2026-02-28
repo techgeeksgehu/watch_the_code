@@ -29,6 +29,8 @@ import FGImage from "@/assets/images/pages/index/sec 10/fg.png";
 </section>
 
 <script>
+    import { gsap } from "@/lib/gsap";
+
     document.addEventListener(
         "astro:page-load",
         () => {
@@ -42,6 +44,7 @@ import FGImage from "@/assets/images/pages/index/sec 10/fg.png";
                     end: "+=200% bottom",
                     scrub: true,
                     pin: true,
+                    invalidateOnRefresh: true,
                 },
             })
                 .to(
@@ -59,7 +62,7 @@ import FGImage from "@/assets/images/pages/index/sec 10/fg.png";
                     { xPercent: 1, duration: 3, ease: "none" },
                     0,
                 )
-                .to("#section-10 ", {
+                .to("#section-10", {
                     opacity: 0,
                     duration: 0.5,
                     ease: "none",

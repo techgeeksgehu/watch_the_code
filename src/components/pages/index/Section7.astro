@@ -142,6 +142,7 @@ import TopImage from "@/assets/images/pages/index/sec 7/top.png";
 </section>
 
 <script>
+    import { gsap } from "@/lib/gsap";
     import { loadVideo } from "@/lib/helpers";
 
     const videoTv = document.getElementById(
@@ -168,6 +169,7 @@ import TopImage from "@/assets/images/pages/index/sec 7/top.png";
                         end: "+=400% bottom",
                         scrub: true,
                         pin: true,
+                        invalidateOnRefresh: true,
                     },
                 })
                 .to(

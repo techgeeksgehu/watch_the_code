@@ -27,6 +27,8 @@ import BGImage from "@/assets/images/pages/index/sec 9/bg.png";
 </section>
 
 <script>
+    import { gsap } from "@/lib/gsap";
+
     document.addEventListener(
         "astro:page-load",
         () => {
@@ -40,6 +42,7 @@ import BGImage from "@/assets/images/pages/index/sec 9/bg.png";
                     end: "+=200% bottom",
                     scrub: true,
                     pin: true,
+                    invalidateOnRefresh: true,
                 },
             })
                 .to(
@@ -52,7 +55,7 @@ import BGImage from "@/assets/images/pages/index/sec 9/bg.png";
                     { xPercent: 1, duration: 3, ease: "none" },
                     0,
                 )
-                .to("#section-9 ", { opacity: 0, duration: 0.5, ease: "none" });
+                .to("#section-9", { opacity: 0, duration: 0.5, ease: "none" });
         },
         { once: false },
     );

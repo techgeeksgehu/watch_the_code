@@ -27,6 +27,8 @@ import Img2 from "@/assets/images/pages/index/sec 5/2.png";
 </section>
 
 <script>
+    import { gsap } from "@/lib/gsap";
+
     document.addEventListener(
         "astro:page-load",
         () => {
@@ -48,6 +50,7 @@ import Img2 from "@/assets/images/pages/index/sec 5/2.png";
                                 end: "+=200% bottom",
                                 scrub: true,
                                 pin: true,
+                                invalidateOnRefresh: true,
                             },
                         })
                         .to(

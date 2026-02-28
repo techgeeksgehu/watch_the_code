@@ -9,6 +9,8 @@
 </section>
 
 <script>
+    import { gsap, ScrollTrigger } from "@/lib/gsap";
+
     document.addEventListener(
         "astro:page-load",
         () => {
@@ -18,67 +20,30 @@
             const fullText = "Scroll down...";
             let typed = false;
 
-            // Initial typing: prefer TextPlugin when available, otherwise set textContent
-            if (typeof gsap !== "undefined") {
-                try {
-                    gsap.to(el, {
-                        text: fullText,
-                        delay: 0.6,
-                        duration: 1.2,
-                        ease: "none",
-                        onComplete() {
-                            typed = true;
-                        },
-                    });
-                } catch (e) {
-                    el.textContent = fullText;
+            gsap.to(el, {
+                text: fullText,
+                delay: 0.6,
+                duration: 1.2,
+                ease: "none",
+                onComplete() {
                     typed = true;
-                }
-            } else {
-                el.textContent = fullText;
-                typed = true;
-            }
+                },
+            });
 
-            // Scroll-triggered reverse-typing using onUpdate so we delete characters proportional to scroll progress.
-            if (typeof ScrollTrigger !== "undefined") {
-                ScrollTrigger.create({
-                    trigger: "#section-0",
-                    start: "top top",
-                    end: "bottom center",
-                    scrub: true,
-                    pin: true,
-                    onUpdate(self) {
-                        if (!typed) return; // wait until initial typing finished
-                        const p = self.progress; // 0 -> 1 as user scrolls down
-                        const remaining = Math.round((1 - p) * fullText.length);
-                        el.textContent = fullText.slice(0, remaining);
-                    },
-                });
-            } else if (
-                typeof gsap !== "undefined" &&
-                gsap.utils &&
-                gsap.utils.toArray
-            ) {
-                // graceful fallback: create a timeline with scrub that animates a dummy value
-                const proxy = { v: 1 };
-                gsap.to(proxy, {
-                    v: 0,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: "#section-0",
-                        start: "top top",
-                        end: "bottom center",
-                        scrub: true,
-                        pin: true,
-                        onUpdate() {},
-                    },
-                    onUpdate() {
-                        if (!typed) return;
-                        const remaining = Math.round(proxy.v * fullText.length);
-                        el.textContent = fullText.slice(0, remaining);
-                    },
-                });
-            }
+            ScrollTrigger.create({
+                trigger: "#section-0",
+                start: "top top",
+                end: "bottom center",
+                scrub: true,
+                pin: true,
+                invalidateOnRefresh: true,
+                onUpdate(self) {
+                    if (!typed) return;
+                    const p = self.progress;
+                    const remaining = Math.round((1 - p) * fullText.length);
+                    el.textContent = fullText.slice(0, remaining);
+                },
+            });
         },
         { once: false },
     );
