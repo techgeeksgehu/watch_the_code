@@ -85,10 +85,16 @@ import ExploreButton from "./ExploreButton.svelte";
     </div>
 
     <div
-        class="absolute top-3/4 left-1/2 md:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 z-5"
+        class="absolute top-3/4 left-1/2 md:left-1/3 lg:left-1/4 -translate-x-1/2 -translate-y-1/2 z-5 flex flex-col sm:flex-row items-center gap-3 sm:gap-4"
         id="section-final-cta"
     >
         <ExploreButton client:load />
+        <a
+            href="/details/"
+            class="inline-block bg-[#ffcb05] text-[#1b3a6b] text-2xl font-minecraft rounded-xl p-3 px-4 cursor-pointer border-2 border-[#ffcb05] hover:bg-[#ffe066] transition-all duration-200"
+        >
+            Details
+        </a>
     </div>
 </section>
 
