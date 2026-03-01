@@ -1,10 +1,66 @@
-<div class="text-black mt-20 pb-20">
-  <h1 class="font-bold font-comic-head text-center mt-10 mb-20 text-4xl"
-    >League <span class="text-red-800">Challenges</span></h1
-  >
-  
-  <div class="h-120 bg-gray-300/30 rounded-4xl w-[80%] mx-auto flex justify-center items-center flex-col gap-6">
-    <img width="120" src="/public/media/details/jigli_puff.png" alt="jiglipuff image" />
-    <p class="lowercase font-comic-para text-gray-500">"statements Will Release after 15<sup>th</sup> march"</p>
+<div class="text-black mt-20 pb-20 px-4">
+  <h1 class="font-bold font-comic-head text-center mt-10 mb-16 text-3xl sm:text-4xl md:text-5xl">
+    League <span class="text-red-800">Challenges</span>
+  </h1>
+
+  <div class="relative max-w-3xl mx-auto">
+    <!-- Outer card with dashed border -->
+    <div class="relative rounded-3xl border-2 border-dashed border-gray-300 bg-gradient-to-b from-white/60 to-gray-100/40 backdrop-blur-sm p-10 sm:p-14 flex flex-col items-center gap-8 overflow-hidden">
+      
+      <!-- Decorative pokeball watermark -->
+      <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full border-[6px] border-gray-200/40 opacity-30 pointer-events-none"></div>
+      <div class="absolute -bottom-12 -left-12 w-36 h-36 rounded-full border-[6px] border-gray-200/40 opacity-20 pointer-events-none"></div>
+
+      <!-- Badge -->
+      <div class="bg-red-100 text-red-700 font-comic-head text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+        Coming Soon
+      </div>
+
+      <!-- Jigglypuff with glow -->
+      <div class="relative">
+        <div class="absolute inset-0 rounded-full bg-pink-300 blur-3xl scale-125 -z-10 opacity-50"></div>
+        <div class="rounded-full bg-pink-100 p-6 sm:p-8 shadow-[0_0_40px_rgba(236,72,153,0.25)] border border-pink-200/60">
+          <img
+            width="140"
+            class="sm:w-44 drop-shadow-[0_6px_20px_rgba(236,72,153,0.4)] animate-float"
+            src="/public/media/details/jigli_puff.png"
+            alt="Jigglypuff singing"
+            draggable="false"
+          />
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="text-center space-y-2">
+        <p class="font-comic-para text-gray-500 text-sm sm:text-base">
+          "Problem statements will be released after
+        </p>
+        <p class="font-comic-head text-red-700 text-xl sm:text-2xl font-bold">
+          15<sup>th</sup> March 2026
+        </p>
+      </div>
+
+      <!-- Decorative divider -->
+      <div class="flex items-center gap-3 w-full max-w-xs">
+        <div class="flex-1 h-px bg-gray-300"></div>
+        <img width="20" src="/public/media/details/pokeball-2d.png" alt="" class="opacity-40" draggable="false" />
+        <div class="flex-1 h-px bg-gray-300"></div>
+      </div>
+
+      <!-- Sub text -->
+      <p class="font-comic-para text-gray-400 text-xs sm:text-sm text-center max-w-sm">
+        Stay tuned, trainers! Jigglypuff is keeping the challenges a secret for now... 🎤
+      </p>
+    </div>
   </div>
 </div>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+</style>
