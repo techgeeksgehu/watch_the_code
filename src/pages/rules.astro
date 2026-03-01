@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@/layout/BaseLayout.astro";
+import TopButton from "@/components/pages/index/TopButton.svelte";
+import Navbar from "@/components/pages/rules/Navbar.astro";
+import RulesContent from "@/components/pages/rules/RulesContent.astro";
+---
+
+<BaseLayout class="bg-[#cfeffb]">
+  <Fragment slot="outside-smooth-scroll">
+    <div class="relative">
+      <div class="sticky top-0 z-0">
+        <Navbar />
+      </div>
+
+      <div class="relative z-10 bg-[#cfeffb]">
+        <RulesContent />
+      </div>
+    </div>
+
+    <div class="fixed left-2 bottom-2 z-999">
+      <TopButton client:load />
+    </div>
+  </Fragment>
+</BaseLayout>
