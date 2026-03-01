@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Offside&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -12,6 +15,8 @@ body {
 	--font-pokemon-hollow: var(--font-pokemon-hollow);
 	--font-pokemon-solid: var(--font-pokemon-solid);
 	--font-minecraft: var(--font-minecraft);
+	--font-comic-head:  "Zen Dots", sans-serif; 
+	--font-comic-para:  "Offside", sans-serif; 
 }
 
 @layer base {
