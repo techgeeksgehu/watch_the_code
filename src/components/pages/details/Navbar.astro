@@ -1,35 +1,41 @@
-<nav class="mx-auto max-w-7xl px-4 py-6 lg:px-8 lg:py-4 bg-transparent text-black">
+---
+const navItems = [
+  { label: "Rounds", href: "#rounds" },
+  { label: "Prizes", href: "#prizes" },
+  { label: "Rules", href: "#rules" },
+  { label: "Challenges", href: "#challenges" },
+  { label: "FAQs", href: "#faqs" },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl px-4 py-4 lg:px-8 lg:py-3 bg-[#cfeffb]/90 backdrop-blur-md text-black">
   <div class="container mx-auto flex items-center justify-between text-black">
     <a href="#" class="mr-4 cursor-pointer py-1.5 font-medium">
       <img
         id="section-1-fg"
         src="/public/logo-landscape.png"
-        alt="Bus Seat"
+        alt="Watch The Code"
         class="relative w-26 h-full object-cover scale-125 z-1"
       />
     </a>
 
     <ul
       class="hidden lg:flex lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 font-comic-para">
-      <li
-        class="flex items-center gap-x-2 p-1 font-medium text-sm text-blue-gray-500 antialiased">
-        <a href="#" class="flex items-center">Timeline</a>
-      </li>
-
-      <li
-        class="flex items-center gap-x-2 p-1 font-medium text-sm text-blue-gray-500 antialiased">
-        <a href="/rules/" class="flex items-center">Rules</a>
-      </li>
-
-      <li
-        class="flex items-center gap-x-2 p-1 font-medium text-sm text-blue-gray-500 antialiased">
-        <a href="#" class="flex items-center">About</a>
-      </li>
-
-      <li
-        class="flex items-center gap-x-2 p-1 font-medium text-sm text-blue-gray-500 antialiased">
-        <a href="#" class="flex items-center">FAQs</a>
-      </li>
+      {navItems.map((item) => (
+        <li class="relative flex items-center gap-x-2 p-1 font-medium text-sm antialiased">
+          <a
+            href={item.href}
+            data-nav-link={item.href.slice(1)}
+            class="nav-link flex items-center text-gray-600 hover:text-red-700 transition-colors duration-200"
+          >
+            {item.label}
+          </a>
+          <span
+            data-nav-indicator={item.href.slice(1)}
+            class="nav-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 w-0 bg-red-700 rounded-full transition-all duration-300"
+          />
+        </li>
+      ))}
     </ul>
 
     <div class="hidden lg:flex items-center gap-x-1">
@@ -77,25 +83,17 @@
   <!-- Mobile Nav -->
   <div id="mobile-nav" class="hidden lg:hidden container mx-auto">
     <ul class="mt-2 mb-4 flex flex-col gap-2">
-      <li
-        class="flex items-center gap-x-2 p-1 font-medium text-sm text-blue-gray-500">
-        <a href="#">Timeline</a>
-      </li>
-
-      <li
-        class="flex items-center gap-x-2 p-1 font-medium text-sm text-blue-gray-500">
-        <a href="/rules/">Rules</a>
-      </li>
-
-      <li
-        class="flex items-center gap-x-2 p-1 font-medium text-sm text-blue-gray-500">
-        <a href="#">About</a>
-      </li>
-
-      <li
-        class="flex items-center gap-x-2 p-1 font-medium text-sm text-blue-gray-500">
-        <a href="#">FAQs</a>
-      </li>
+      {navItems.map((item) => (
+        <li class="flex items-center gap-x-2 p-1 font-medium text-sm">
+          <a
+            href={item.href}
+            data-nav-link-mobile={item.href.slice(1)}
+            class="nav-link-mobile text-gray-600 transition-colors duration-200"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
     </ul>
 
     <!-- Mobile Buttons -->
@@ -112,6 +110,7 @@
 </nav>
 
 <script>
+  // Mobile toggle
   const toggle = document.getElementById("nav-toggle");
   const mobileNav = document.getElementById("mobile-nav");
   const iconOpen = document.getElementById("icon-open");
@@ -124,7 +123,6 @@
     iconClose?.classList.toggle("hidden", isOpen);
   });
 
-  // Close on resize to desktop
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 1024) {
       mobileNav?.classList.add("hidden");
@@ -132,4 +130,67 @@
       iconClose?.classList.add("hidden");
     }
   });
+
+  // Close mobile nav on link click
+  document.querySelectorAll<HTMLAnchorElement>(".nav-link-mobile").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileNav?.classList.add("hidden");
+      iconOpen?.classList.remove("hidden");
+      iconClose?.classList.add("hidden");
+    });
+  });
+
+  // Active section indicator via IntersectionObserver
+  const sectionIds = ["rounds", "prizes", "rules", "challenges", "faqs"];
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]");
+  const navIndicators = document.querySelectorAll<HTMLSpanElement>("[data-nav-indicator]");
+  const mobileLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav-link-mobile]");
+
+  function setActive(id: string) {
+    navLinks.forEach((link) => {
+      const isActive = link.dataset.navLink === id;
+      link.classList.toggle("text-red-700", isActive);
+      link.classList.toggle("font-bold", isActive);
+      link.classList.toggle("text-gray-600", !isActive);
+    });
+    navIndicators.forEach((ind) => {
+      const isActive = ind.dataset.navIndicator === id;
+      if (isActive) {
+        ind.style.width = "100%";
+      } else {
+        ind.style.width = "0";
+      }
+    });
+    mobileLinks.forEach((link) => {
+      const isActive = link.dataset.navLinkMobile === id;
+      link.classList.toggle("text-red-700", isActive);
+      link.classList.toggle("font-bold", isActive);
+      link.classList.toggle("text-gray-600", !isActive);
+    });
+  }
+
+  const observerOptions: IntersectionObserverInit = {
+    rootMargin: "-20% 0px -60% 0px",
+    threshold: 0,
+  };
+
+  const visibleSections = new Map<string, boolean>();
+
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      visibleSections.set(entry.target.id, entry.isIntersecting);
+    }
+    // Pick the first visible section in document order
+    for (const id of sectionIds) {
+      if (visibleSections.get(id)) {
+        setActive(id);
+        return;
+      }
+    }
+  }, observerOptions);
+
+  for (const id of sectionIds) {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  }
 </script>
