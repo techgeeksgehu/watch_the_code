@@ -1,31 +1,86 @@
 <div class="relative text-black">
-  <h1 class="font-bold font-comic-head text-center mt-10 text-4xl"
-    >The <span class="text-red-800">Journey</span></h1
-  >
-  <div class="flex justify-center items-center h-screen opacity-80">
+  <h1 class="font-bold font-comic-head text-center mt-10 text-3xl sm:text-4xl">
+    The <span class="text-red-800">Journey</span>
+  </h1>
+
+  <div class="hidden lg:flex justify-center items-center h-screen opacity-80">
     <img width="350" src="/public/media/details/stages-process.png" draggable="false" />
   </div>
 
-  <div class="absolute top-20 left-30 flex items-center flex-col">
-    <img width="300" src="/public/media/details/misty-shyduck.png" draggable="false" />
+  <div class="flex flex-col gap-12 px-6 py-10 lg:hidden">
+
+    <!-- Round 1 -->
+    <div class="flex flex-col items-center">
+      <img width="220" src="/public/media/details/misty-shyduck.png" draggable="false" />
+      <div class="mt-4 text-center">
+        <h2 class="font-comic-head font-bold text-lg">Round One: The Indigo League</h2>
+        <p class="max-w-sm mx-auto font-comic-para text-xs mt-2 text-center">
+          Participants submit their innovative solution ideas and approach for the
+          given problem statement for initial evaluation and shortlisting.
+        </p>
+      </div>
+    </div>
+
+    <!-- Round 2 -->
+    <div class="flex flex-col items-center">
+      <img width="160" src="/public/media/details/brock-dude.png" draggable="false" />
+      <div class="mt-4 text-center">
+        <h2 class="font-comic-head font-bold text-lg">Round Two: The Indigo League</h2>
+        <p class="max-w-sm mx-auto font-comic-para text-xs mt-2 text-center">
+          Shortlisted teams will build and present a working MVP with system
+          architecture and GitHub submission, evaluated on implementation quality,
+          scalability, and teamwork.
+        </p>
+      </div>
+    </div>
+
+    <!-- Squirtle cameo -->
+    <div class="flex flex-col items-center opacity-80">
+      <img width="120" class="rotate-12" src="/public/media/details/squirtle-wink.png" draggable="false" />
+      <p class="font-comic-para font-bold text-xs text-sky-800 mt-1 -rotate-3">"squirtle, squirtle"</p>
+    </div>
+
+    <!-- Finale -->
+    <div class="flex flex-col items-center">
+      <div class="relative">
+        <img width="220" src="/public/media/details/ash.png" draggable="false" />
+        <img
+          width="100"
+          class="absolute -top-10 -right-8 opacity-80"
+          src="/public/media/details/kabutar.png"
+          alt=""
+        />
+      </div>
+      <div class="mt-4 text-center">
+        <h2 class="font-comic-head font-bold text-lg">Finale: The Master's League</h2>
+        <p class="max-w-sm mx-auto font-comic-para text-xs mt-2 text-center">
+          Shortlisted teams will compete on-campus to develop and present
+          innovative, real-world solutions to industry-curated problem statements
+          before a judging panel.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Round 1: top-left -->
+  <div class="hidden lg:flex absolute top-20 left-20 xl:left-30 items-center flex-col">
+    <img width="260" width="300" src="/public/media/details/misty-shyduck.png" draggable="false" />
     <div class="mt-4">
-      <h1 class="text-center font-comic-head font-bold"
-        >Round One: The Indigo League</h1
-      >
-      <p class="max-w-100 text-center font-comic-para text-xs mt-2">
+      <h1 class="text-center font-comic-head font-bold">Round One: The Indigo League</h1>
+      <p class="max-w-xs xl:max-w-100 text-center font-comic-para text-xs mt-2">
         Participants submit their innovative solution ideas and approach for the
         given problem statement for initial evaluation and shortlisting.
       </p>
     </div>
   </div>
 
-  <div class="absolute top-40 right-20 flex items-center flex-col">
-    <img width="200" src="/public/media/details/brock-dude.png" draggable="false" />
+  <!-- Round 2: top-right -->
+  <div class="hidden lg:flex absolute top-40 right-10 xl:right-20 items-center flex-col">
+    <img width="160" width="200" src="/public/media/details/brock-dude.png" draggable="false" />
     <div class="mt-4">
-      <h1 class="text-center font-comic-head font-bold"
-        >Round Two: The Indigo League</h1
-      >
-      <p class="max-w-100 text-center font-comic-para text-xs mt-2">
+      <h1 class="text-center font-comic-head font-bold">Round Two: The Indigo League</h1>
+      <p class="max-w-xs xl:max-w-100 text-center font-comic-para text-xs mt-2">
         Shortlisted teams will build and present a working MVP with system
         architecture and GitHub submission, evaluated on implementation quality,
         scalability, and teamwork.
@@ -33,31 +88,28 @@
     </div>
   </div>
 
-  <div class="absolute z-0 bottom-40 left-60 rotate-24">
-    <img width="175" src="/public/media/details/squirtle-wink.png" draggable="false" />
+  <!-- Squirtle: bottom-left decoration -->
+  <div class="hidden lg:block absolute z-0 bottom-40 left-40 xl:left-60 rotate-24">
+    <img width="140" width="175" src="/public/media/details/squirtle-wink.png" draggable="false" />
+  </div>
+  <div class="hidden lg:block absolute bottom-36 left-32 xl:left-50 rotate-39">
+    <p class="font-comic-para font-bold text-xs text-sky-800">"squirtle, squirtle"</p>
   </div>
 
-  <div class="absolute bottom-36 left-50 rotate-39">
-    <p class="font-comic-para font-bold text-xs text-sky-800"
-      >"squirtle, squirtle"</p
-    >
-  </div>
-
-  <div class="absolute -bottom-40 right-60 flex items-center flex-row-reverse">
-    <img width="300" src="/public/media/details/ash.png" draggable="false" />
+  <!-- Finale: bottom-right -->
+  <div class="hidden lg:flex absolute -bottom-40 right-40 xl:right-60 items-center flex-row-reverse">
+    <img width="240" width="300" src="/public/media/details/ash.png" draggable="false" />
     <div class="z-10">
-      <h1 class="text-center font-comic-head font-bold"
-        >Finale: The Master's League</h1
-      >
-      <p class="max-w-100 text-center font-comic-para text-xs mt-2">
+      <h1 class="text-center font-comic-head font-bold">Finale: The Master's League</h1>
+      <p class="max-w-xs xl:max-w-100 text-center font-comic-para text-xs mt-2">
         Shortlisted teams will compete on-campus to develop and present
         innovative, real-world solutions to industry-curated problem statements
         before a judging panel.
       </p>
     </div>
     <img
-      width="150"
-      class="absolute z-0 bottom-46 right-75"
+      width="120" width="150"
+      class="absolute z-0 bottom-46 right-60 xl:right-75"
       src="/public/media/details/kabutar.png"
       alt=""
     />

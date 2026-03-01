@@ -4,7 +4,9 @@ import TopButton from "@/components/pages/index/TopButton.svelte";
 import Navbar from "@/components/pages/details/Navbar.astro";
 import HeroSection from "@/components/pages/details/HeroSection.astro";
 import Rounds from "@/components/pages/details/Rounds.astro";
-import Timeline from "@/components/pages/details/Timeline.astro";
+import Prizes from "@/components/pages/details/Prizes.astro";
+import ProblemStatement from "@/components/pages/details/ProblemStatement.astro";
+import Faq from "@/components/pages/details/Faq.astro";
 ---
 
 <BaseLayout class="bg-[#cfeffb]">
@@ -23,7 +25,11 @@ import Timeline from "@/components/pages/details/Timeline.astro";
       </div>
     </div>
     
-    <Timeline />
+    <Prizes />
+    
+    <ProblemStatement />
+    
+    <Faq />
     
     <div class="fixed left-2 bottom-2 z-999">
       <TopButton client:load />

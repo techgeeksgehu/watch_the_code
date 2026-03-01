@@ -1,56 +1,55 @@
-<div class="relative text-black select-none">
-  <div class="absolute top-10 -right-20">
+<div class="relative text-black select-none overflow-hidden">
+  <div class="hidden md:block absolute top-10 -right-20 -rotate-4 lg:-right-20">
     <img
-      width="400"
-      class="-rotate-10"
+      width="280"
+      class="-rotate-10 "
       src="/public/media/details/pikachu.png"
       draggable="false"
     />
   </div>
 
-  <div class="absolute top-24 left-36 -rotate-40 opacity-50">
+  <div class="hidden sm:block absolute top-16 left-10 md:top-24 md:left-36 -rotate-40 opacity-50">
     <img
-      width="100"
-      class="-rotate-10"
+      width="60"
+      class="-rotate-10 md:w-25"
       src="/public/media/details/pokeball-comic.png"
       draggable="false"
     />
   </div>
 
-  <div class="absolute bottom-10 right-110 rotate-90 opacity-50">
+  <!-- Bottom pokeball - hidden on mobile -->
+  <div class="hidden sm:block absolute bottom-10 right-20 md:right-110 rotate-90 opacity-50">
     <img
-      width="100"
-      class="-rotate-10"
+      width="60"
+      class="-rotate-10 md:w-25"
       src="/public/media/details/pokeball-comic.png"
       draggable="false"
     />
   </div>
 
-  <div class="flex flex-col justify-center items-center h-[80vh] pr-80">
+  <div class="flex flex-col justify-center items-center min-h-[80vh] px-6 sm:px-12 md:pr-60 lg:pr-80 py-16">
     <img
-      width="120"
-      class="mb-6"
+      width="80"
+      class="mb-6 sm:w-25 md:w-30"
       src="/public/media/details/pokemon-text.png"
       alt="Pokemon text"
       draggable="false"
     />
-    <h1 class="comic-font text-6xl font-extrabold capitalize font-comic-head flex gap-6"
-      >
-      <span class="text-red-800 ">Watch</span>
+    <h1 class="comic-font text-4xl sm:text-5xl md:text-6xl font-extrabold capitalize font-comic-head flex flex-wrap justify-center gap-3 sm:gap-6 text-center">
+      <span class="text-red-800">Watch</span>
       <span class="text-gray-900">The</span>
       <span class="text-blue-800">Code</span>
     </h1>
-    <p
-      class="comic-font text-xl mt-4 font-semibold uppercase text-gray-500 font-comic-para"
-      >Gotta Code 'Em All</p
-    >
-    <div class="mt-6">
-      <p class="max-w-200 text-center mt-2 font-comic-para">
+    <p class="comic-font text-base sm:text-xl mt-4 font-semibold uppercase text-gray-500 font-comic-para text-center">
+      Gotta Code 'Em All
+    </p>
+    <div class="mt-6 px-2">
+      <p class="max-w-xs sm:max-w-lg md:max-w-200 text-center mt-2 font-comic-para text-sm sm:text-base">
         Watch The Code 2026 is a <i>national-level</i> hackathon by <i>Graphic Era Hill
         University, Haldwani Campus,</i> where participants pick problem statements
         and present innovative tech solutions.
       </p>
-      <p class="max-w-200 text-center mt-2 font-comic-para">
+      <p class="max-w-xs sm:max-w-lg md:max-w-200 text-center mt-2 font-comic-para text-sm sm:text-base">
         Compete, collaborate, and showcase your skills through structured idea
         submissions and creative coding challenges.
       </p>

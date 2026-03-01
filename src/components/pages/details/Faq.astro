@@ -1,0 +1,157 @@
+---
+const faqs = [
+  {
+    question: "Who can participate in Watch The Code 2026?",
+    answer:
+      "Any college student currently enrolled in an undergraduate or postgraduate program can participate. Teams of 2–4 members are allowed, and cross-college teams are welcome!",
+  },
+  {
+    question: "Is there a registration fee?",
+    answer:
+      "Nope — Watch The Code 2026 is completely free to enter. Just like catching Pokémon, the only cost is your time and talent.",
+  },
+  {
+    question: "What problem statements will be provided?",
+    answer:
+      "Problem statements span domains like Healthcare, EdTech, FinTech, Sustainability, and Smart Cities. They will be revealed at the start of Round One, curated by industry partners.",
+  },
+  {
+    question: "What do I need to submit for Round One?",
+    answer:
+      "A clear problem statement selection, your proposed solution approach, a rough tech stack outline, and a short write-up (max 500 words). No code required at this stage!",
+  },
+  {
+    question: "Where is the finale held?",
+    answer:
+      "The Master's League finale takes place on-campus at Graphic Era Hill University, Haldwani Campus. Shortlisted teams will receive travel and accommodation details via email.",
+  },
+  {
+    question: "Can I use AI tools during the hackathon?",
+    answer:
+      "Yes! AI tools are permitted as long as the core idea, architecture, and implementation decisions are your own. Think of AI as your Pokédex — helpful, but you still gotta catch 'em yourself.",
+  },
+];
+---
+
+<div class="w-full max-w-5xl mx-auto px-4 sm:px-8 mt-20 pb-20 text-black">
+  <h2 class="font-comic-head font-bold text-3xl sm:text-4xl text-center mb-2">
+    Got <span class="text-red-800">Questions?</span>
+  </h2>
+  <p class="text-center font-comic-para text-gray-500 text-sm mb-10 sm:mb-14">
+    Even Psyduck had questions. We've got answers.
+  </p>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+    <!-- FAQ Accordion -->
+    <div class="flex flex-col gap-3">
+      {
+        faqs.map((faq) => (
+          <details class="faq-item border-2 border-black rounded-xl">
+            <summary class="faq-summary flex justify-between items-center px-5 py-4 cursor-pointer font-comic-head font-bold text-sm sm:text-base bg-white rounded-xl hover:bg-red-50 transition-colors">
+              <span>{faq.question}</span>
+              <span class="faq-icon ml-3 shrink-0" aria-hidden="true" />
+            </summary>
+            <div class="px-5 py-4 font-comic-para text-sm text-gray-700 border-t-2 border-black bg-amber-50 rounded-b-xl">
+              {faq.answer}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+
+    <!-- Psyduck mascot -->
+    <div class="flex flex-col items-center justify-start pt-4 lg:pt-10 gap-4">
+      <div class="relative">
+        <img
+          width="260"
+          class="sm:w-75 drop-shadow-lg"
+          src="/public/media/details/shyduck.png"
+          alt="Psyduck thinking"
+          draggable="false"
+        />
+        <!-- Speech bubble -->
+        <div class="absolute -top-14 -left-4 sm:-left-10 bg-white border-2 border-black rounded-2xl px-4 py-2 max-w-50 shadow-md">
+          <p class="font-comic-para text-xs font-bold text-gray-700 leading-snug">
+            "Psy... why didn't I read the FAQ first?"
+          </p>
+          <!-- Bubble tail (outer black border) -->
+          <div class="absolute -bottom-2.5 right-8 w-0 h-0 border-l-8 border-r-8 border-t-10 border-l-transparent border-r-transparent border-t-black"></div>
+          <!-- Bubble tail (inner white fill) -->
+          <div class="absolute -bottom-2 right-8.25 w-0 h-0 border-l-[7px] border-r-[7px] border-t-[9px] border-l-transparent border-r-transparent border-t-white"></div>
+        </div>
+      </div>
+      <p class="font-comic-para text-xs text-gray-400 italic text-center max-w-55">
+        Still confused? Reach out at{" "}
+        <span class="text-red-700 font-bold not-italic">techgeeksgehu@gmail.com</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ── Remove native browser triangle marker ── */
+  .faq-item > summary {
+    list-style: none;
+  }
+  .faq-item > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Flatten bottom radius on open summary so it flows into the answer panel */
+  .faq-item[open] > .faq-summary {
+    border-radius: 0.75rem 0.75rem 0 0;
+  }
+
+  /* ── Animated + / × icon ── */
+  .faq-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2.5px;
+    background: #991b1b; /* red-800 */
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+    transition: transform 0.25s ease;
+  }
+
+  /* Vertical bar of the + sign */
+  .faq-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  /* When open: rotate both bars into an × */
+  .faq-item[open] .faq-icon::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .faq-item[open] .faq-icon::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+</style>
+
+<script>
+  // Accordion behaviour: close siblings when one opens
+  const items = document.querySelectorAll<HTMLDetailsElement>(".faq-item");
+
+  items.forEach((item) => {
+    item.addEventListener("toggle", () => {
+      if (item.open) {
+        items.forEach((other) => {
+          if (other !== item && other.open) {
+            other.open = false;
+          }
+        });
+      }
+    });
+  });
+</script>
