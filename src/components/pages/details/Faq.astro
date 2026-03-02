@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
-import shyduckImg from '/public/media/details/shyduck.png';
+import { Image } from "astro:assets";
+import shyduckImg from "/public/media/details/shyduck.png";
 
 const faqs = [
   {
@@ -30,17 +30,19 @@ const faqs = [
   },
   {
     question: "Is there a Gym Leader we have to defeat?",
-    answer:
-      "Yes — the judging panel. Prepare your best moves!",
+    answer: "Yes — the judging panel. Prepare your best moves!",
   },
   {
     question: "What if my teammate turns into a Magikarp under pressure?",
-    answer: "No worries. With teamwork and support, every Magikarp can become a Gyarados."
-  }
+    answer:
+      "No worries. With teamwork and support, every Magikarp can become a Gyarados.",
+  },
 ];
 ---
 
-<div id="faq" class="w-full max-w-5xl mx-auto px-4 sm:px-8 mt-20 pb-20 text-black">
+<div
+  id="faq"
+  class="w-full max-w-5xl mx-auto px-4 sm:px-8 mt-20 pb-20 text-black">
   <h2 class="font-comic-head font-bold text-3xl sm:text-4xl text-center mb-2">
     Got <span class="text-red-800">Questions?</span>
   </h2>
@@ -70,28 +72,41 @@ const faqs = [
     <div class="flex flex-col items-center justify-start pt-4 lg:pt-10 gap-4">
       <div class="relative">
         <Image
-          width={260}
-          class="sm:w-75 drop-shadow-lg"
+          width={500}
+          quality={100}
+          class="w-48 sm:w-64 drop-shadow-lg"
           src={shyduckImg}
           alt="Psyduck thinking"
           draggable="false"
         />
         <!-- Speech bubble -->
-        <div class="absolute -top-14 -left-4 sm:-left-10 bg-white border-2 border-black rounded-2xl px-4 py-2 max-w-50 shadow-md">
-          <p class="font-comic-para text-xs font-bold text-gray-700 leading-snug">
+        <div
+          class="absolute -top-14 -left-4 sm:-left-10 bg-white border-2 border-black rounded-2xl px-4 py-2 max-w-50 shadow-md">
+          <p
+            class="font-comic-para text-xs font-bold text-gray-700 leading-snug">
             "Psy... why didn't I read the FAQ first?"
           </p>
           <!-- Bubble tail (outer black border) -->
-          <div class="absolute -bottom-2.5 right-8 w-0 h-0 border-l-8 border-r-8 border-t-10 border-l-transparent border-r-transparent border-t-black"></div>
+          <div
+            class="absolute -bottom-2.5 right-8 w-0 h-0 border-l-8 border-r-8 border-t-10 border-l-transparent border-r-transparent border-t-black"
+          ></div>
           <!-- Bubble tail (inner white fill) -->
-          <div class="absolute -bottom-2 right-8.25 w-0 h-0 border-l-[7px] border-r-[7px] border-t-[9px] border-l-transparent border-r-transparent border-t-white"></div>
+          <div
+            class="absolute -bottom-2 right-8.25 w-0 h-0 border-l-[7px] border-r-[7px] border-t-[9px] border-l-transparent border-r-transparent border-t-white"
+          ></div>
         </div>
-        
-        <p class="text-amber-500 font-bold lowercase absolute top-0 right-0 rotate-20 font-comic-para">"Psy-ay-ay"</p>
+
+        <p
+          class="text-amber-500 font-bold lowercase absolute top-0 right-0 rotate-20 font-comic-para"
+          >"Psy-ay-ay"</p
+        >
       </div>
-      <p class="font-comic-para text-xs text-gray-400 italic text-center max-w-55">
+      <p
+        class="font-comic-para text-xs text-gray-400 italic text-center max-w-55">
         Still confused? Reach out at{" "}
-        <span class="text-red-700 font-bold not-italic">techgeeks@gehu.ac.in</span>
+        <span class="text-red-700 font-bold not-italic"
+          >techgeeks@gehu.ac.in</span
+        >
       </p>
     </div>
   </div>
