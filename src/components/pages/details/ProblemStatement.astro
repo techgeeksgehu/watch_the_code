@@ -1,12 +1,18 @@
+---
+import { Image } from 'astro:assets';
+
+import jigglypuffImg from '/public/media/details/jigli_puff.png';
+import pokeball2dImg from '/public/media/details/pokeball-2d.png';
+---
+
 <div class="text-black mt-20 pb-20 px-4">
   <h1 class="font-bold font-comic-head text-center mt-10 mb-16 text-3xl sm:text-4xl md:text-5xl">
     League <span class="text-red-800">Challenges</span>
   </h1>
-
   <div class="relative max-w-3xl mx-auto">
     <!-- Outer card with dashed border -->
     <div class="relative rounded-3xl border-2 border-dashed border-gray-300 bg-linear-to-b from-white/60 to-gray-100/40 backdrop-blur-sm p-10 sm:p-14 flex flex-col items-center gap-8 overflow-hidden">
-      
+
       <!-- Decorative pokeball watermark -->
       <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full border-[6px] border-gray-200/40 opacity-30 pointer-events-none"></div>
       <div class="absolute -bottom-12 -left-12 w-36 h-36 rounded-full border-[6px] border-gray-200/40 opacity-20 pointer-events-none"></div>
@@ -20,10 +26,10 @@
       <div class="relative">
         <div class="absolute inset-0 rounded-full bg-pink-300 blur-3xl scale-125 -z-10 opacity-50"></div>
         <div class="rounded-full bg-pink-100 p-6 sm:p-8 shadow-[0_0_40px_rgba(236,72,153,0.25)] border border-pink-200/60">
-          <img
-            width="140"
+          <Image
+            width={140}
             class="sm:w-44 drop-shadow-[0_6px_20px_rgba(236,72,153,0.4)] animate-float"
-            src="/public/media/details/jigli_puff.png"
+            src={jigglypuffImg}
             alt="Jigglypuff singing"
             draggable="false"
           />
@@ -43,7 +49,7 @@
       <!-- Decorative divider -->
       <div class="flex items-center gap-3 w-full max-w-xs">
         <div class="flex-1 h-px bg-gray-300"></div>
-        <img width="20" src="/public/media/details/pokeball-2d.png" alt="" class="opacity-40" draggable="false" />
+        <Image width={20} src={pokeball2dImg} alt="" class="opacity-40" draggable="false" />
         <div class="flex-1 h-px bg-gray-300"></div>
       </div>
 

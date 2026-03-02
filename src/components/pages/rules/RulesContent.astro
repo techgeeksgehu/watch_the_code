@@ -1,4 +1,24 @@
 ---
+import { Image } from 'astro:assets';
+
+import pokeballComicImg from '/public/media/details/pokeball-comic.png';
+import badgeOneImg from '/public/media/details/badge-one.png';
+import badgeTwoImg from '/public/media/details/badge-two.png';
+import badgeThreeImg from '/public/media/details/badge-three.png';
+import badgeFourImg from '/public/media/details/badge-four.png';
+import badgeFiveImg from '/public/media/details/badge-five.png';
+import badgeSixImg from '/public/media/details/badge-six.png';
+
+// Map icon paths to imported images
+const badgeMap: Record<string, ImageMetadata> = {
+  "/public/media/details/badge-one.png":   badgeOneImg,
+  "/public/media/details/badge-two.png":   badgeTwoImg,
+  "/public/media/details/badge-three.png": badgeThreeImg,
+  "/public/media/details/badge-four.png":  badgeFourImg,
+  "/public/media/details/badge-five.png":  badgeFiveImg,
+  "/public/media/details/badge-six.png":   badgeSixImg,
+};
+
 interface RuleCard {
   icon: string;
   text: string;
@@ -17,22 +37,10 @@ const rounds: RoundData[] = [
     title: "Round 1: The Indigo League",
     subtitle: "Idea Submission Round",
     rules: [
-      {
-        icon: "/public/media/details/badge-one.png",
-        text: "Submit a properly formatted 7–10 slide PPT (max 25 MB) with all mandatory technical components before 22 March 2026.",
-      },
-      {
-        icon: "/public/media/details/badge-two.png",
-        text: "Clearly explain and justify every technical decision – no vague descriptions, buzzwords, or plagiarism.",
-      },
-      {
-        icon: "/public/media/details/badge-three.png",
-        text: "Judging focuses mainly on solution clarity (30%), technical depth (25%), and problem understanding (20%).",
-      },
-      {
-        icon: "/public/media/details/badge-four.png",
-        text: "Follow strict team rules (4 members only, one submission per team) to avoid disqualification.",
-      },
+      { icon: "/public/media/details/badge-one.png",   text: "Submit a properly formatted 7–10 slide PPT (max 25 MB) with all mandatory technical components before 22 March 2026." },
+      { icon: "/public/media/details/badge-two.png",   text: "Clearly explain and justify every technical decision – no vague descriptions, buzzwords, or plagiarism." },
+      { icon: "/public/media/details/badge-three.png", text: "Judging focuses mainly on solution clarity (30%), technical depth (25%), and problem understanding (20%)." },
+      { icon: "/public/media/details/badge-four.png",  text: "Follow strict team rules (4 members only, one submission per team) to avoid disqualification." },
     ],
     downloadLabel: "Download Trainer Guide – Round 1",
     downloadLink: "https://docs.google.com/document/d/1uNb6LDg2fY81Hyey7jgRG37QX_ssASEOoWHvJ7k47LU/export?format=pdf",
@@ -41,22 +49,10 @@ const rounds: RoundData[] = [
     title: "Round 2: The Orange League",
     subtitle: "MVP Development Round",
     rules: [
-      {
-        icon: "/public/media/details/badge-five.png",
-        text: "Build and present a working MVP with system architecture and a public GitHub repository link.",
-      },
-      {
-        icon: "/public/media/details/badge-six.png",
-        text: "Submit a 3–5 minute video demo showcasing the functionality and key features of your solution.",
-      },
-      {
-        icon: "/public/media/details/badge-one.png",
-        text: "Evaluation criteria: implementation quality (30%), scalability (25%), innovation (20%), and teamwork (25%).",
-      },
-      {
-        icon: "/public/media/details/badge-two.png",
-        text: "All code must be original – any use of pre-existing projects or templates leads to disqualification.",
-      },
+      { icon: "/public/media/details/badge-five.png", text: "Build and present a working MVP with system architecture and a public GitHub repository link." },
+      { icon: "/public/media/details/badge-six.png",  text: "Submit a 3–5 minute video demo showcasing the functionality and key features of your solution." },
+      { icon: "/public/media/details/badge-one.png",  text: "Evaluation criteria: implementation quality (30%), scalability (25%), innovation (20%), and teamwork (25%)." },
+      { icon: "/public/media/details/badge-two.png",  text: "All code must be original – any use of pre-existing projects or templates leads to disqualification." },
     ],
     downloadLabel: "Download Trainer Guide – Round 2",
     downloadLink: "https://docs.google.com/document/d/1rkLCSNwgL8oHf1PIZEFt4B1Pnt_cXUuPIm8fb0exu6s/export?format=pdf",
@@ -65,22 +61,10 @@ const rounds: RoundData[] = [
     title: "Finale: The Master's League",
     subtitle: "On-Campus Grand Finale",
     rules: [
-      {
-        icon: "/public/media/details/badge-three.png",
-        text: "Compete on-campus to develop and present innovative, real-world solutions to industry-curated problem statements.",
-      },
-      {
-        icon: "/public/media/details/badge-four.png",
-        text: "Present before a live judging panel – clarity of communication and demonstration is critical.",
-      },
-      {
-        icon: "/public/media/details/badge-five.png",
-        text: "Teams must bring their own laptops. Internet access, power, and workspace will be provided.",
-      },
-      {
-        icon: "/public/media/details/badge-six.png",
-        text: "Final scoring: presentation quality (30%), technical excellence (30%), innovation (20%), real-world impact (20%).",
-      },
+      { icon: "/public/media/details/badge-three.png", text: "Compete on-campus to develop and present innovative, real-world solutions to industry-curated problem statements." },
+      { icon: "/public/media/details/badge-four.png",  text: "Present before a live judging panel – clarity of communication and demonstration is critical." },
+      { icon: "/public/media/details/badge-five.png",  text: "Teams must bring their own laptops. Internet access, power, and workspace will be provided." },
+      { icon: "/public/media/details/badge-six.png",   text: "Final scoring: presentation quality (30%), technical excellence (30%), innovation (20%), real-world impact (20%)." },
     ],
     downloadLabel: "Download Trainer Guide – Finale",
     downloadLink: "https://docs.google.com/document/d/1RsrjcNf5_FG1IFI4XZEFSOeD4cB5TS6oNPL86d3RRDE/export?format=pdf",
@@ -109,16 +93,18 @@ const rounds: RoundData[] = [
           ]}
         >
           <div class="relative">
-            <!-- Glow ring behind active pokeball -->
-            <div class:list={[
-              "absolute inset-0 rounded-full transition-opacity duration-150",
-              i === 0 ? "opacity-100" : "opacity-0",
-            ]} data-glow={i}
+            <div
+              class:list={[
+                "absolute inset-0 rounded-full transition-opacity duration-150",
+                i === 0 ? "opacity-100" : "opacity-0",
+              ]}
+              data-glow={i}
               style="background: radial-gradient(circle, rgba(239,68,68,0.25) 0%, transparent 70%); transform: scale(1.5);"
             />
-            <img
-              src="/public/media/details/pokeball-comic.png"
+            <Image
+              src={pokeballComicImg}
               alt="pokeball"
+              width={96}
               class="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-transform duration-150 ease-out group-hover:scale-110"
               draggable="false"
             />
@@ -136,7 +122,7 @@ const rounds: RoundData[] = [
     {rounds.map((round, i) => (
       <div data-tab-panel={i} class:list={["tab-panel", i !== 0 && "hidden"]}>
 
-        <!-- ===== RETRO COMPUTER CONTAINER ===== -->
+        <!-- RETRO COMPUTER CONTAINER -->
         <div class="rounded-3xl bg-linear-to-b from-red-500 to-red-700 p-4 md:p-5 shadow-[0_8px_40px_rgba(185,28,28,0.35)] border-4 border-red-800/80">
 
           <!-- Top chrome bar -->
@@ -149,28 +135,23 @@ const rounds: RoundData[] = [
 
           <!-- Screen area -->
           <div class="bg-[#d9e6d2] rounded-2xl p-6 sm:p-8 md:p-10 border-[3px] border-gray-400/70 shadow-inner">
-
-            <!-- Round title -->
             <h2 class="font-comic-head font-bold text-xl sm:text-2xl md:text-3xl uppercase text-gray-900 mb-10 pb-4 border-b-2 border-gray-400/50">
               {round.title}
             </h2>
 
-            <!-- 2×2 rules grid with clear card boundaries -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
               {round.rules.map((rule) => (
                 <div class="flex items-start gap-5 group">
-                  <!-- Badge icon -->
                   <div class="shrink-0 w-16 h-16 flex items-center justify-center">
-                    <img
-                      src={rule.icon}
+                    <Image
+                      src={badgeMap[rule.icon]}
                       alt="badge"
-                      width="60"
-                      height="60"
+                      width={60}
+                      height={60}
                       class="drop-shadow-md"
                       draggable="false"
                     />
                   </div>
-                  <!-- Rule text card -->
                   <div class="flex-1 rounded-xl border-2 border-gray-500/60 bg-[#c8d8c4] px-5 py-4 shadow-sm transition-shadow group-hover:shadow-md">
                     <p class="font-comic-para text-[13px] sm:text-sm text-gray-800 leading-relaxed">
                       {rule.text}
@@ -192,7 +173,6 @@ const rounds: RoundData[] = [
             </div>
           </div>
         </div>
-        <!-- ===== END RETRO COMPUTER ===== -->
 
         <!-- Download button + disclaimer -->
         <div class="flex flex-col items-center mt-12 mb-20 gap-5">
@@ -200,7 +180,6 @@ const rounds: RoundData[] = [
             href={round.downloadLink}
             class="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-200"
           >
-            <!-- Main button body -->
             <div class="flex items-center gap-4 bg-[#1e293b] hover:bg-[#0f172a] px-8 py-4 transition-colors duration-200">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0 0l-4-4m4 4l4-4" />
@@ -209,11 +188,9 @@ const rounds: RoundData[] = [
                 {round.downloadLabel}
               </span>
             </div>
-            <!-- Red bottom accent bar -->
             <div class="h-1.5 bg-red-500 w-full" />
           </a>
 
-          <!-- Disclaimer text -->
           <p class="flex items-center gap-2 font-comic-para text-xs sm:text-sm text-gray-500 uppercase tracking-widest">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10" />
@@ -222,8 +199,7 @@ const rounds: RoundData[] = [
             All rules are subject to change by the league committee
           </p>
         </div>
-
-      </div>
+        </div>
     ))}
   </div>
 </div>
@@ -237,7 +213,6 @@ const rounds: RoundData[] = [
     btn.addEventListener("click", () => {
       const index = btn.getAttribute("data-tab-btn");
 
-      // Update buttons
       tabBtns.forEach((b) => {
         b.classList.remove("opacity-100", "scale-105");
         b.classList.add("opacity-40");
@@ -245,7 +220,6 @@ const rounds: RoundData[] = [
       btn.classList.remove("opacity-40");
       btn.classList.add("opacity-100", "scale-105");
 
-      // Update glow rings
       glows.forEach((g) => {
         g.classList.remove("opacity-100");
         g.classList.add("opacity-0");
@@ -253,10 +227,7 @@ const rounds: RoundData[] = [
       document.querySelector(`[data-glow="${index}"]`)?.classList.remove("opacity-0");
       document.querySelector(`[data-glow="${index}"]`)?.classList.add("opacity-100");
 
-      // Update panels
-      tabPanels.forEach((panel) => {
-        panel.classList.add("hidden");
-      });
+      tabPanels.forEach((panel) => panel.classList.add("hidden"));
       document.querySelector(`[data-tab-panel="${index}"]`)?.classList.remove("hidden");
     });
   });

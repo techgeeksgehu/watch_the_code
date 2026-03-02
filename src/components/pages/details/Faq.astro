@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import shyduckImg from '/public/media/details/shyduck.png';
+
 const faqs = [
   {
     question: "Who can participate in Watch The Code 2026?",
@@ -66,10 +69,10 @@ const faqs = [
     <!-- Psyduck mascot -->
     <div class="flex flex-col items-center justify-start pt-4 lg:pt-10 gap-4">
       <div class="relative">
-        <img
-          width="260"
+        <Image
+          width={260}
           class="sm:w-75 drop-shadow-lg"
-          src="/public/media/details/shyduck.png"
+          src={shyduckImg}
           alt="Psyduck thinking"
           draggable="false"
         />
@@ -125,18 +128,16 @@ const faqs = [
     left: 50%;
     width: 14px;
     height: 2.5px;
-    background: #991b1b; /* red-800 */
+    background: #991b1b;
     border-radius: 2px;
     transform: translate(-50%, -50%);
     transition: transform 0.25s ease;
   }
 
-  /* Vertical bar of the + sign */
   .faq-icon::after {
     transform: translate(-50%, -50%) rotate(90deg);
   }
 
-  /* When open: rotate both bars into an × */
   .faq-item[open] .faq-icon::before {
     transform: translate(-50%, -50%) rotate(45deg);
   }
@@ -146,7 +147,6 @@ const faqs = [
 </style>
 
 <script>
-  // Accordion behaviour: close siblings when one opens
   const items = document.querySelectorAll<HTMLDetailsElement>(".faq-item");
 
   items.forEach((item) => {

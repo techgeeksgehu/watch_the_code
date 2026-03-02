@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import Logo from "/public/logo-landscape.png";
+
 const navItems = [
   { label: "Rounds", href: "#rounds" },
   { label: "Prizes", href: "#prizes" },
@@ -13,8 +16,8 @@ const navItems = [
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="group flex items-center gap-2 cursor-pointer py-1 font-medium shrink-0">
-        <img
-          src="/public/logo-landscape.png"
+        <Image
+          src={Logo}
           alt="Watch The Code"
           class="w-52 sm:w-52 h-auto object-contain transition-transform duration-200 group-hover:scale-105"
         />

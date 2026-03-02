@@ -2,6 +2,17 @@
 import BaseLayout from "@/layout/BaseLayout.astro";
 import TopButton from "@/components/pages/index/TopButton.svelte";
 import Footer from "@/components/partials/Footer.astro";
+import { Image } from 'astro:assets';
+
+import pikachuImg from '/public/media/details/pikachu.png';
+import pikachuSittingImg from '/public/media/details/pikachu-sitting.png';
+import pokeballComicImg from '/public/media/details/pokeball-comic.png';
+import pokeball2dImg from '/public/media/details/pokeball-2d.png';
+import pokemonTextImg from '/public/media/details/pokemon-text.png';
+import squirtleWinkImg from '/public/media/details/squirtle-wink.png';
+import jigglypuffImg from '/public/media/details/jigli_puff.png';
+import shyduckImg from '/public/media/details/shyduck.png';
+import logoLandscapeImg from '/public/logo-landscape.png';
 
 const navItems = [
   { label: "The Hackathon", href: "#hackathon" },
@@ -19,9 +30,10 @@ const navItems = [
         <div class="flex items-center justify-between">
           <!-- Logo -->
           <a href="/" class="group flex items-center gap-2 cursor-pointer py-1 font-medium shrink-0">
-            <img
-              src="/public/logo-landscape.png"
+            <Image
+              src={logoLandscapeImg}
               alt="Watch The Code"
+              width={208}
               class="w-52 sm:w-52 h-auto object-contain transition-transform duration-200 group-hover:scale-105"
             />
           </a>
@@ -59,24 +71,10 @@ const navItems = [
             id="about-nav-toggle"
             class="relative w-8 h-8 flex items-center justify-center rounded-lg hover:bg-black/5 transition-colors lg:hidden"
             aria-label="Toggle navigation">
-            <svg
-              id="about-icon-open"
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-gray-700"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2.5">
+            <svg id="about-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <svg
-              id="about-icon-close"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              class="h-5 w-5 text-gray-700 hidden"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2.5">
+            <svg id="about-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" class="h-5 w-5 text-gray-700 hidden" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -99,8 +97,7 @@ const navItems = [
               </li>
             ))}
           </ul>
-
-          <a
+          
             href="/details/"
             class="block w-full px-4 py-2.5 text-sm text-center font-bold text-white rounded-xl bg-red-600 shadow-md hover:bg-red-700 transition-all font-comic-para">
             View Details
@@ -109,42 +106,46 @@ const navItems = [
       </div>
     </nav>
 
-    <!-- Spacer to prevent content from hiding behind fixed navbar -->
     <div class="h-14 lg:h-12"></div>
 
     <!-- =============================== -->
     <!-- HERO: Watch The Code             -->
     <!-- =============================== -->
     <section id="hackathon" class="relative min-h-screen flex items-center justify-center overflow-hidden text-black pt-20">
-      <!-- Floating decorations -->
-      <div class="hidden md:block absolute top-20 -right-10 -rotate-6 opacity-80">
-        <img width="320" src="/public/media/details/pikachu.png" alt="Pikachu" draggable="false" />
+      <div class="hidden md:block absolute top-20 -right-20 -rotate-6 ">
+        <Image width={320} src={pikachuImg} alt="Pikachu" draggable="false" />
       </div>
       <div class="hidden sm:block absolute bottom-16 left-10 rotate-12 opacity-40">
-        <img width="120" src="/public/media/details/pokeball-comic.png" alt="" draggable="false" />
+        <Image width={120} src={pokeballComicImg} alt="" draggable="false" />
       </div>
       <div class="hidden sm:block absolute top-32 left-8 -rotate-20 opacity-40">
-        <img width="90" src="/public/media/details/pokeball-comic.png" alt="" draggable="false" />
+        <Image width={90} src={pokeballComicImg} alt="" draggable="false" />
       </div>
 
       <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <img width="80" class="mx-auto mb-6 sm:w-24" src="/public/media/details/pokemon-text.png" alt="Pokemon text" draggable="false" />
+        <Image 
+          width={96}
+          class="mx-auto mb-6"
+          src={pokemonTextImg} 
+          alt="Pokemon text" 
+          draggable="false" 
+        />
         <h1 class="font-comic-head text-5xl sm:text-6xl md:text-7xl font-extrabold flex flex-wrap justify-center gap-3 sm:gap-5">
           <span class="text-red-800">Watch</span>
           <span class="text-gray-900">The</span>
           <span class="text-blue-800">Code</span>
         </h1>
-        <p class="font-comic-head text-lg sm:text-xl mt-4 uppercase text-gray-500 tracking-widest">
+        <p class="font-comic-para text-lg sm:text-xl mt-4 uppercase font-bold text-gray-500 tracking-widest">
           Gotta Code 'Em All
         </p>
 
-      <div class="mt-8 space-y-4 font-comic-para text-sm sm:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed">
-        <p>
-           <strong class="text-red-700">Watch The Code 2026</strong> is a <em>national-level 24-hour hackathon</em>
-              by Graphic Era Hill University, Haldwani — where coders evolve, battle real-world problems,
-              and rise as champions. One day. One challenge. Catch your victory.
-        </p>
-      </div>
+        <div class="mt-8 space-y-4 font-comic-para text-sm sm:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed">
+          <p>
+            <strong class="text-red-700">Watch The Code 2026</strong> is a <em>national-level 24-hour hackathon</em>
+            by Graphic Era Hill University, Haldwani — where coders evolve, battle real-world problems,
+            and rise as champions. One day. One challenge. Catch your victory.
+          </p>
+        </div>
 
         <!-- Stats ribbon -->
         <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto">
@@ -177,9 +178,7 @@ const navItems = [
       </div>
     </section>
 
-    <!-- =============================== -->
-    <!-- Divider: Pokeball                -->
-    <!-- =============================== -->
+    <!-- Divider: Pokeball -->
     <div class="flex justify-center py-12">
       <div class="pokeball-wrapper">
         <div class="pokeball-shadow"></div>
@@ -188,7 +187,7 @@ const navItems = [
         <div class="pokeball-sparkle sparkle-2"></div>
         <div class="pokeball-sparkle sparkle-3"></div>
         <div class="pokeball-divider">
-          <img width="70" src="/public/media/details/pokeball-2d.png" alt="" draggable="false" />
+          <Image width={70} src={pokeball2dImg} alt="" draggable="false" />
         </div>
       </div>
     </div>
@@ -196,13 +195,12 @@ const navItems = [
     <!-- =============================== -->
     <!-- SECTION 2: GEHU Haldwani        -->
     <!-- =============================== -->
-    <section id="college" class="relative min-h-auto py-20 overflow-hidden text-black">
+    <section id="college" class="relative min-h-auto py-20  text-black">
       <div class="hidden md:block absolute -top-8 right-10 opacity-30 rotate-12">
-        <img width="180" src="/public/media/details/squirtle-wink.png" alt="" draggable="false" />
+        <Image width={180} src={squirtleWinkImg} alt="" draggable="false" /> 
       </div>
 
       <div class="max-w-5xl mx-auto px-6">
-        <!-- Header -->
         <div class="text-center mb-12">
           <p class="font-comic-para text-xs uppercase tracking-[0.25em] text-red-500 mb-2">The Arena</p>
           <h2 class="font-comic-head text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
@@ -211,9 +209,7 @@ const navItems = [
           <p class="font-comic-head text-lg sm:text-xl text-blue-700 mt-1 font-semibold">Haldwani Campus</p>
         </div>
 
-        <!-- Content cards -->
         <div class="grid md:grid-cols-2 gap-8">
-          <!-- About College -->
           <div class="bg-white/70 backdrop-blur rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition-shadow">
             <div class="flex items-center gap-3 mb-5">
               <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
@@ -226,18 +222,17 @@ const navItems = [
             </div>
             <div class="space-y-3 font-comic-para text-sm text-gray-600 leading-relaxed">
               <p>
-                Graphic Era Hill University (GEHU), Haldwani Campus, is one of the leading educational institutions 
-                in Uttarakhand. Nestled at the foothills of the Kumaon hills, the campus provides a vibrant environment 
+                Graphic Era Hill University (GEHU), Haldwani Campus, is one of the leading educational institutions
+                in Uttarakhand. Nestled at the foothills of the Kumaon hills, the campus provides a vibrant environment
                 for academic excellence and innovation.
               </p>
               <p>
-                With state-of-the-art labs, experienced faculty, and a strong focus on practical learning, 
+                With state-of-the-art labs, experienced faculty, and a strong focus on practical learning,
                 GEHU has been nurturing the next generation of engineers, entrepreneurs, and tech leaders.
               </p>
             </div>
           </div>
 
-          <!-- Why GEHU -->
           <div class="bg-white/70 backdrop-blur rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition-shadow">
             <div class="flex items-center gap-3 mb-5">
               <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
@@ -248,35 +243,18 @@ const navItems = [
               <h3 class="font-comic-head text-lg text-gray-900 font-bold">Campus Highlights</h3>
             </div>
             <ul class="space-y-3 font-comic-para text-sm text-gray-600">
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 mt-0.5">&#9733;</span>
-                <span>NAAC accredited university with 20+ years of academic legacy</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 mt-0.5">&#9733;</span>
-                <span>Multiple engineering, management, and research programmes</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 mt-0.5">&#9733;</span>
-                <span>Strong placement records with top recruiters visiting campus</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 mt-0.5">&#9733;</span>
-                <span>Active student clubs fostering innovation, coding, and entrepreneurship</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 mt-0.5">&#9733;</span>
-                <span>Modern infrastructure with smart classrooms and high-speed labs</span>
-              </li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">&#9733;</span><span>NAAC accredited university with 20+ years of academic legacy</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">&#9733;</span><span>Multiple engineering, management, and research programmes</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">&#9733;</span><span>Strong placement records with top recruiters visiting campus</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">&#9733;</span><span>Active student clubs fostering innovation, coding, and entrepreneurship</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">&#9733;</span><span>Modern infrastructure with smart classrooms and high-speed labs</span></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =============================== -->
-    <!-- Divider: Pokeball                -->
-    <!-- =============================== -->
+    <!-- Divider: Pokeball -->
     <div class="flex justify-center py-12">
       <div class="pokeball-wrapper">
         <div class="pokeball-shadow delay-300"></div>
@@ -285,7 +263,7 @@ const navItems = [
         <div class="pokeball-sparkle sparkle-2 delay-300"></div>
         <div class="pokeball-sparkle sparkle-3 delay-300"></div>
         <div class="pokeball-divider delay-300">
-          <img width="70" src="/public/media/details/pokeball-2d.png" alt="" draggable="false" />
+          <Image width={70} src={pokeball2dImg} alt="" draggable="false" />
         </div>
       </div>
     </div>
@@ -295,40 +273,35 @@ const navItems = [
     <!-- =============================== -->
     <section id="club" class="relative min-h-auto py-20 overflow-hidden text-black">
       <div class="hidden md:block absolute top-10 left-6 opacity-25 -rotate-12">
-        <img width="160" src="/public/media/details/jigli_puff.png" alt="" draggable="false" />
+        <Image width={160} src={jigglypuffImg} alt="" draggable="false" />
       </div>
       <div class="hidden sm:block absolute bottom-10 right-8 opacity-30 rotate-6">
-        <img width="140" src="/public/media/details/shyduck.png" alt="" draggable="false" />
+        <Image width={140} src={shyduckImg} alt="" draggable="false" />
       </div>
 
       <div class="max-w-5xl mx-auto px-6">
-        <!-- Header -->
         <div class="text-center mb-12">
           <p class="font-comic-para text-xs uppercase tracking-[0.25em] text-blue-500 mb-2">The Trainers</p>
-          <h2 class="font-comic-head text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
-            Tech Geeks
-          </h2>
+          <h2 class="font-comic-head text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">Tech Geeks</h2>
           <p class="font-comic-head text-base sm:text-lg text-gray-500 mt-2">The Official Tech Club of GEHU Haldwani</p>
         </div>
 
-        <!-- About + Mission -->
         <div class="bg-white/70 backdrop-blur rounded-2xl border border-gray-200 p-8 sm:p-10 shadow-sm mb-10">
           <div class="space-y-4 font-comic-para text-sm sm:text-base text-gray-700 leading-relaxed">
             <p>
-              <strong class="text-blue-700">Tech Geeks</strong> is the premier technology club of Graphic Era Hill University, 
-              Haldwani Campus. Run by students, for students — the club is the beating heart of all things tech on campus. 
-              From coding bootcamps and hackathons to workshops on AI, web dev, and competitive programming — 
+              <strong class="text-blue-700">Tech Geeks</strong> is the premier technology club of Graphic Era Hill University,
+              Haldwani Campus. Run by students, for students — the club is the beating heart of all things tech on campus.
+              From coding bootcamps and hackathons to workshops on AI, web dev, and competitive programming —
               Tech Geeks is where ideas evolve into reality.
             </p>
             <p>
-              Just like a Pokémon trainer builds their team, Tech Geeks helps students build their skills — 
-              one event, one project, one challenge at a time. The club believes in learning by doing 
+              Just like a Pokémon trainer builds their team, Tech Geeks helps students build their skills —
+              one event, one project, one challenge at a time. The club believes in learning by doing
               and has been the driving force behind multiple national-level tech events.
             </p>
           </div>
         </div>
 
-        <!-- What They Do -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="bg-white/70 backdrop-blur rounded-xl border border-red-100 p-6 shadow-sm hover:shadow-md hover:border-red-300 transition-all group">
             <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-4 group-hover:bg-red-100 transition-colors">
@@ -337,9 +310,7 @@ const navItems = [
               </svg>
             </div>
             <h4 class="font-comic-head text-sm font-bold text-gray-900 mb-2">Hackathons & Competitions</h4>
-            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">
-              Organising and participating in national-level hackathons, coding contests, and tech challenges.
-            </p>
+            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">Organising and participating in national-level hackathons, coding contests, and tech challenges.</p>
           </div>
 
           <div class="bg-white/70 backdrop-blur rounded-xl border border-blue-100 p-6 shadow-sm hover:shadow-md hover:border-blue-300 transition-all group">
@@ -349,9 +320,7 @@ const navItems = [
               </svg>
             </div>
             <h4 class="font-comic-head text-sm font-bold text-gray-900 mb-2">Workshops & Bootcamps</h4>
-            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">
-              Hands-on sessions on web development, AI/ML, cloud computing, open source, and more.
-            </p>
+            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">Hands-on sessions on web development, AI/ML, cloud computing, open source, and more.</p>
           </div>
 
           <div class="bg-white/70 backdrop-blur rounded-xl border border-yellow-100 p-6 shadow-sm hover:shadow-md hover:border-yellow-300 transition-all group">
@@ -361,9 +330,7 @@ const navItems = [
               </svg>
             </div>
             <h4 class="font-comic-head text-sm font-bold text-gray-900 mb-2">Community & Mentorship</h4>
-            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">
-              Building a strong peer-to-peer learning community with senior mentorship and project guidance.
-            </p>
+            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">Building a strong peer-to-peer learning community with senior mentorship and project guidance.</p>
           </div>
 
           <div class="bg-white/70 backdrop-blur rounded-xl border border-green-100 p-6 shadow-sm hover:shadow-md hover:border-green-300 transition-all group">
@@ -373,9 +340,7 @@ const navItems = [
               </svg>
             </div>
             <h4 class="font-comic-head text-sm font-bold text-gray-900 mb-2">Innovation & Projects</h4>
-            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">
-              Encouraging open-source contributions, side projects, and real-world problem solving.
-            </p>
+            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">Encouraging open-source contributions, side projects, and real-world problem solving.</p>
           </div>
 
           <div class="bg-white/70 backdrop-blur rounded-xl border border-purple-100 p-6 shadow-sm hover:shadow-md hover:border-purple-300 transition-all group">
@@ -385,9 +350,7 @@ const navItems = [
               </svg>
             </div>
             <h4 class="font-comic-head text-sm font-bold text-gray-900 mb-2">Tech Talks & Seminars</h4>
-            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">
-              Hosting talks by industry professionals, alumni, and student speakers on trending tech topics.
-            </p>
+            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">Hosting talks by industry professionals, alumni, and student speakers on trending tech topics.</p>
           </div>
 
           <div class="bg-white/70 backdrop-blur rounded-xl border border-pink-100 p-6 shadow-sm hover:shadow-md hover:border-pink-300 transition-all group">
@@ -397,13 +360,10 @@ const navItems = [
               </svg>
             </div>
             <h4 class="font-comic-head text-sm font-bold text-gray-900 mb-2">Fun & Networking</h4>
-            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">
-              Gaming nights and social events that keep the tech community bonded and energized.
-            </p>
+            <p class="font-comic-para text-xs text-gray-500 leading-relaxed">Gaming nights and social events that keep the tech community bonded and energized.</p>
           </div>
         </div>
 
-        <!-- CTA -->
         <div class="text-center mt-14">
           <p class="font-comic-para text-sm text-gray-500 mb-4">Want to join the squad?</p>
           <div class="flex flex-wrap gap-4 justify-center">
@@ -418,15 +378,13 @@ const navItems = [
       </div>
     </section>
 
-    <!-- =============================== -->
-    <!-- Bottom Pokémon Banner            -->
-    <!-- =============================== -->
+    <!-- Bottom Pokémon Banner -->
     <div class="relative py-16 overflow-hidden">
       <div class="flex justify-center items-end gap-6 sm:gap-14 opacity-40">
-        <img width="110" src="/public/media/details/squirtle-wink.png" alt="" draggable="false" class="hidden sm:block" />
-        <img width="95" src="/public/media/details/pikachu-sitting.png" alt="" draggable="false" />
-        <img width="85" src="/public/media/details/jigli_puff.png" alt="" draggable="false" />
-        <img width="100" src="/public/media/details/shyduck.png" alt="" draggable="false" class="hidden sm:block" />
+        <Image width={110} src={squirtleWinkImg} alt="" draggable="false" class="hidden sm:block" />
+        <Image width={95} src={pikachuSittingImg} alt="" draggable="false" />
+        <Image width={85} src={jigglypuffImg} alt="" draggable="false" />
+        <Image width={100} src={shyduckImg} alt="" draggable="false" class="hidden sm:block" />
       </div>
       <p class="font-comic-para text-center text-xs text-gray-400 mt-6 tracking-wider uppercase">
         Gotta Code 'Em All &mdash; Watch The Code 2026
@@ -440,7 +398,6 @@ const navItems = [
     </div>
 
     <style>
-      /* --- Pokeball Divider System --- */
       .pokeball-wrapper {
         position: relative;
         display: flex;
@@ -449,8 +406,6 @@ const navItems = [
         width: 100px;
         height: 100px;
       }
-
-      /* Ground shadow that scales with bounce */
       .pokeball-shadow {
         position: absolute;
         bottom: 2px;
@@ -462,8 +417,6 @@ const navItems = [
         border-radius: 50%;
         animation: pokeball-shadow 2s cubic-bezier(0.35, 0, 0.25, 1) infinite;
       }
-
-      /* Soft glow ring behind the ball */
       .pokeball-glow {
         position: absolute;
         width: 80px;
@@ -472,16 +425,12 @@ const navItems = [
         background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 65%);
         animation: pokeball-glow-pulse 2s ease-in-out infinite;
       }
-
-      /* The ball itself */
       .pokeball-divider {
         position: relative;
         z-index: 2;
         animation: pokeball-bounce 2s cubic-bezier(0.35, 0, 0.25, 1) infinite;
         filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
       }
-
-      /* Sparkle particles */
       .pokeball-sparkle {
         position: absolute;
         width: 6px;
@@ -491,104 +440,39 @@ const navItems = [
         z-index: 3;
         opacity: 0;
       }
-      .sparkle-1 {
-        animation: sparkle-burst 2s ease-out infinite;
-        animation-delay: 0.15s;
-      }
-      .sparkle-2 {
-        animation: sparkle-burst-2 2s ease-out infinite;
-        animation-delay: 0.25s;
-      }
-      .sparkle-3 {
-        animation: sparkle-burst-3 2s ease-out infinite;
-        animation-delay: 0.1s;
-      }
-
-      /* Delay variants */
-      .delay-300 {
-        animation-delay: 0.3s !important;
-      }
+      .sparkle-1 { animation: sparkle-burst 2s ease-out infinite; animation-delay: 0.15s; }
+      .sparkle-2 { animation: sparkle-burst-2 2s ease-out infinite; animation-delay: 0.25s; }
+      .sparkle-3 { animation: sparkle-burst-3 2s ease-out infinite; animation-delay: 0.1s; }
+      .delay-300 { animation-delay: 0.3s !important; }
       .pokeball-wrapper .delay-300.sparkle-1 { animation-delay: 0.45s !important; }
       .pokeball-wrapper .delay-300.sparkle-2 { animation-delay: 0.55s !important; }
       .pokeball-wrapper .delay-300.sparkle-3 { animation-delay: 0.4s !important; }
 
-      /* --- Keyframes --- */
       @keyframes pokeball-bounce {
-        0% {
-          transform: translateY(0) rotate(0deg) scale(1);
-        }
-        10% {
-          transform: translateY(2px) rotate(0deg) scale(1.03, 0.95);
-        }
-        30% {
-          transform: translateY(-30px) rotate(-12deg) scale(0.95, 1.05);
-        }
-        50% {
-          transform: translateY(0) rotate(0deg) scale(1.05, 0.93);
-        }
-        58% {
-          transform: translateY(0px) rotate(0deg) scale(1, 1);
-        }
-        70% {
-          transform: translateY(-12px) rotate(8deg) scale(0.98, 1.02);
-        }
-        85% {
-          transform: translateY(0) rotate(0deg) scale(1.02, 0.97);
-        }
-        92% {
-          transform: translateY(-3px) rotate(-2deg);
-        }
-        100% {
-          transform: translateY(0) rotate(0deg) scale(1);
-        }
+        0% { transform: translateY(0) rotate(0deg) scale(1); }
+        10% { transform: translateY(2px) rotate(0deg) scale(1.03, 0.95); }
+        30% { transform: translateY(-30px) rotate(-12deg) scale(0.95, 1.05); }
+        50% { transform: translateY(0) rotate(0deg) scale(1.05, 0.93); }
+        58% { transform: translateY(0px) rotate(0deg) scale(1, 1); }
+        70% { transform: translateY(-12px) rotate(8deg) scale(0.98, 1.02); }
+        85% { transform: translateY(0) rotate(0deg) scale(1.02, 0.97); }
+        92% { transform: translateY(-3px) rotate(-2deg); }
+        100% { transform: translateY(0) rotate(0deg) scale(1); }
       }
-
       @keyframes pokeball-shadow {
-        0%, 100% {
-          transform: translateX(-50%) scaleX(1);
-          opacity: 0.6;
-        }
-        10% {
-          transform: translateX(-50%) scaleX(1.1);
-          opacity: 0.7;
-        }
-        30% {
-          transform: translateX(-50%) scaleX(0.5);
-          opacity: 0.25;
-        }
-        50% {
-          transform: translateX(-50%) scaleX(1.15);
-          opacity: 0.7;
-        }
-        70% {
-          transform: translateX(-50%) scaleX(0.7);
-          opacity: 0.35;
-        }
-        85% {
-          transform: translateX(-50%) scaleX(1.05);
-          opacity: 0.6;
-        }
+        0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.6; }
+        10% { transform: translateX(-50%) scaleX(1.1); opacity: 0.7; }
+        30% { transform: translateX(-50%) scaleX(0.5); opacity: 0.25; }
+        50% { transform: translateX(-50%) scaleX(1.15); opacity: 0.7; }
+        70% { transform: translateX(-50%) scaleX(0.7); opacity: 0.35; }
+        85% { transform: translateX(-50%) scaleX(1.05); opacity: 0.6; }
       }
-
       @keyframes pokeball-glow-pulse {
-        0%, 100% {
-          transform: scale(1);
-          opacity: 0.5;
-        }
-        30% {
-          transform: scale(1.3);
-          opacity: 0.9;
-        }
-        50% {
-          transform: scale(0.9);
-          opacity: 0.4;
-        }
-        70% {
-          transform: scale(1.15);
-          opacity: 0.7;
-        }
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        30% { transform: scale(1.3); opacity: 0.9; }
+        50% { transform: scale(0.9); opacity: 0.4; }
+        70% { transform: scale(1.15); opacity: 0.7; }
       }
-
       @keyframes sparkle-burst {
         0%, 8% { opacity: 0; transform: translate(0, 0) scale(0); }
         25% { opacity: 1; transform: translate(-22px, -20px) scale(1); }
@@ -610,7 +494,6 @@ const navItems = [
     </style>
 
     <script>
-      // Mobile toggle
       const toggle = document.getElementById("about-nav-toggle");
       const mobileNav = document.getElementById("about-mobile-nav");
       const iconOpen = document.getElementById("about-icon-open");
@@ -631,7 +514,6 @@ const navItems = [
         }
       });
 
-      // Close mobile nav on link click
       document.querySelectorAll<HTMLAnchorElement>(".nav-link-mobile").forEach((link) => {
         link.addEventListener("click", () => {
           mobileNav?.classList.add("hidden");
@@ -640,14 +522,12 @@ const navItems = [
         });
       });
 
-      // Smooth scroll with navbar offset for all anchor links
       const NAVBAR_OFFSET = 72;
 
       function scrollToSection(hash: string) {
         const id = hash.replace("#", "");
         const target = document.getElementById(id);
         if (!target) return false;
-
         const top = target.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET;
         window.scrollTo({ top, behavior: "smooth" });
         return true;
@@ -663,7 +543,6 @@ const navItems = [
         });
       });
 
-      // Scroll shadow effect
       const navbar = document.getElementById("about-navbar");
       window.addEventListener("scroll", () => {
         if (window.scrollY > 20) {
@@ -675,7 +554,6 @@ const navItems = [
         }
       }, { passive: true });
 
-      // Active section indicator via IntersectionObserver
       const sectionIds = ["hackathon", "college", "club"];
       const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]");
       const navIndicators = document.querySelectorAll<HTMLSpanElement>("[data-nav-indicator]");
