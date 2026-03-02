@@ -7,17 +7,19 @@ import Rounds from "@/components/pages/details/Rounds.astro";
 import Prizes from "@/components/pages/details/Prizes.astro";
 import ProblemStatement from "@/components/pages/details/ProblemStatement.astro";
 import Faq from "@/components/pages/details/Faq.astro";
+import RulesContent from "@/components/pages/rules/RulesContent.astro";
+import Footer from "@/components/partials/Footer.astro";
 ---
 
 <BaseLayout class="bg-[#cfeffb]">
   <Fragment slot="outside-smooth-scroll">
+    <Navbar />
     <div class="relative">
       <div class="sticky top-0 z-0">
-        <Navbar />
         <HeroSection />
       </div>
       
-      <div class="-bottom-40 relative h-screen bg-[#cfeffb] z-10 border-t-2 border-red-700"> 
+      <div id="rounds" class="-bottom-40 relative h-screen bg-[#cfeffb] z-10 border-t-2 border-red-700"> 
         <div class="absolute -top-16 left-[47%] z-0">
           <img width="70" src="/public/media/details/pikachu-sitting.png" alt="pikachu sitting" draggable="false">
         </div> 
@@ -25,11 +27,23 @@ import Faq from "@/components/pages/details/Faq.astro";
       </div>
     </div>
     
-    <Prizes />
+    <div id="prizes">
+      <Prizes />
+    </div>
+
+    <div id="rules">
+      <RulesContent />
+    </div>
     
-    <ProblemStatement />
+    <div id="challenges">
+      <ProblemStatement />
+    </div>
     
-    <Faq />
+    <div id="faqs">
+      <Faq />
+    </div>
+
+    <Footer />
     
     <div class="fixed left-2 bottom-2 z-999">
       <TopButton client:load />

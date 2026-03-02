@@ -10,6 +10,11 @@ body {
 	margin: 0; /* Remove default margin */
 }
 
+/* Offset anchors for fixed navbar */
+[id] {
+	scroll-margin-top: 4.5rem;
+}
+
 @theme inline {
 	--font-sans: var(--font-noto-sans);
 	--font-pokemon-hollow: var(--font-pokemon-hollow);
