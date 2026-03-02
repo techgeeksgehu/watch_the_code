@@ -3,37 +3,41 @@ const faqs = [
   {
     question: "Who can participate in Watch The Code 2026?",
     answer:
-      "Any college student currently enrolled in an undergraduate or postgraduate program can participate. Teams of 2–4 members are allowed, and cross-college teams are welcome!",
+      "Any college student currently enrolled in an undergraduate or postgraduate program can participate. Teams of 4 members are allowed, and cross-college teams are welcome!",
   },
   {
     question: "Is there a registration fee?",
     answer:
-      "Nope — Watch The Code 2026 is completely free to enter. Just like catching Pokémon, the only cost is your time and talent.",
+      "The registration fee for the final round is ₹250 per participant (₹1000 per team)",
   },
   {
-    question: "What problem statements will be provided?",
+    question: "What happens if a teammate drops out?",
     answer:
-      "Problem statements span domains like Healthcare, EdTech, FinTech, Sustainability, and Smart Cities. They will be revealed at the start of Round One, curated by industry partners.",
-  },
-  {
-    question: "What do I need to submit for Round One?",
-    answer:
-      "A clear problem statement selection, your proposed solution approach, a rough tech stack outline, and a short write-up (max 500 words). No code required at this stage!",
+      "The Team Leader must inform the organizers immediately. Further action will be taken accordingly, based on the situation and event guidelines.",
   },
   {
     question: "Where is the finale held?",
     answer:
-      "The Master's League finale takes place on-campus at Graphic Era Hill University, Haldwani Campus. Shortlisted teams will receive travel and accommodation details via email.",
+      "The Master's League finale takes place on-campus at Graphic Era Hill University, Haldwani Campus.",
   },
   {
-    question: "Can I use AI tools during the hackathon?",
+    question: "Will food and accommodation be provided?",
     answer:
-      "Yes! AI tools are permitted as long as the core idea, architecture, and implementation decisions are your own. Think of AI as your Pokédex — helpful, but you still gotta catch 'em yourself.",
+      "Yes! Both food and accommodation will be provided for all participants during the hackathon.",
   },
+  {
+    question: "Is there a Gym Leader we have to defeat?",
+    answer:
+      "Yes — the judging panel. Prepare your best moves!",
+  },
+  {
+    question: "What if my teammate turns into a Magikarp under pressure?",
+    answer: "No worries. With teamwork and support, every Magikarp can become a Gyarados."
+  }
 ];
 ---
 
-<div class="w-full max-w-5xl mx-auto px-4 sm:px-8 mt-20 pb-20 text-black">
+<div id="faq" class="w-full max-w-5xl mx-auto px-4 sm:px-8 mt-20 pb-20 text-black">
   <h2 class="font-comic-head font-bold text-3xl sm:text-4xl text-center mb-2">
     Got <span class="text-red-800">Questions?</span>
   </h2>
@@ -79,10 +83,12 @@ const faqs = [
           <!-- Bubble tail (inner white fill) -->
           <div class="absolute -bottom-2 right-8.25 w-0 h-0 border-l-[7px] border-r-[7px] border-t-[9px] border-l-transparent border-r-transparent border-t-white"></div>
         </div>
+        
+        <p class="text-amber-500 font-bold lowercase absolute top-0 right-0 rotate-20 font-comic-para">"Psy-ay-ay"</p>
       </div>
       <p class="font-comic-para text-xs text-gray-400 italic text-center max-w-55">
         Still confused? Reach out at{" "}
-        <span class="text-red-700 font-bold not-italic">techgeeksgehu@gmail.com</span>
+        <span class="text-red-700 font-bold not-italic">techgeeks@gehu.ac.in</span>
       </p>
     </div>
   </div>
