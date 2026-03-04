@@ -7,10 +7,10 @@ import Head, {
 import "@/styles/global.css";
 
 export interface Props extends HeadProps {
-    class?: string;
+    bodyClass?: string;
 }
 
-const { class: className, ...props } = Astro.props;
+const { bodyClass, ...props } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,7 +19,7 @@ const { class: className, ...props } = Astro.props;
         <Head {...props} />
         <Fonts />
     </head>
-    <body class:list={[className]}>
+    <body class:list={[bodyClass]}>
         <SmoothScroller>
             <slot />
         </SmoothScroller>
