@@ -1,0 +1,56 @@
+---
+import MarkdownContent from "@/components/partials/MarkdownContent.astro";
+import PageLayout, { type Props as PageLayoutProps } from "./PageLayout.astro";
+
+interface Props {
+    frontmatter: PageLayoutProps;
+}
+
+const { frontmatter } = Astro.props as Props;
+
+import HomeBG from "@/assets/images/pages/home/bg.png";
+import AboutBG from "@/assets/images/pages/about/bg.png";
+import TimelineBG from "@/assets/images/pages/timeline/bg.png";
+import SponsorBG from "@/assets/images/pages/sponsor/bg.png";
+import RulesBG from "@/assets/images/pages/rules/bg.png";
+import Image from "@/components/helpers/Image.astro";
+
+const bg = [
+    {
+        path: "/home/",
+        image: HomeBG,
+    },
+    {
+        path: "/about/",
+        image: AboutBG,
+    },
+    {
+        path: "/timeline/",
+        image: TimelineBG,
+    },
+    {
+        path: "/sponsor/",
+        image: SponsorBG,
+    },
+    {
+        path: "/rules/",
+        image: RulesBG,
+    },
+];
+---
+
+<PageLayout {...frontmatter}>
+    <MarkdownContent>
+        <slot />
+    </MarkdownContent>
+
+    <Fragment slot="outside-smooth-scroll">
+        <div class="fixed top-0 left-0 right-0 bottom-0 -z-1">
+            <Image
+                src={bg.find((bg) => bg.path === Astro.url.pathname)?.image}
+                alt="Background"
+                class="w-full h-full object-cover blur-xs"
+            />
+        </div>
+    </Fragment>
+</PageLayout>

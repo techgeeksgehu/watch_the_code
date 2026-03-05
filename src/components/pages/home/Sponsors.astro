@@ -1,0 +1,56 @@
+---
+import Card from "@/components/starwind/card";
+import { Icon } from "astro-icon/components";
+
+const sponsors = [
+    {
+        name: ".XYZ",
+        title: "Domain Sponsor",
+        url: "https://xyz.com",
+        icon: "xyz",
+    },
+    {
+        name: "CodeCrafters",
+        title: "Learning Sponsor",
+        url: "https://codecrafters.io",
+        icon: "codecrafters",
+    },
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {
+        sponsors.map((sponsor) => (
+            <Card.Root>
+                <Card.Header>
+                    <Card.Title class="text-center">{sponsor.title}</Card.Title>
+                </Card.Header>
+
+                <Card.Content>
+                    <a href={sponsor.url} target="_blank">
+                        <Icon
+                            name={sponsor.icon}
+                            class="w-32 h-32 mx-auto object-contain"
+                        />
+                    </a>
+                </Card.Content>
+                <Card.Footer class="flex justify-center">
+                    {sponsor.name}
+                </Card.Footer>
+            </Card.Root>
+
+            // <div
+            //     class="flex flex-col items-center justify-center"
+            //     id={sponsor.icon}
+            // >
+            //     <a href={sponsor.url} target="_blank">
+            //         <Icon
+            //             name={sponsor.icon}
+            //             class="w-32 h-32 mx-auto object-contain"
+            //         />
+            //     </a>
+            //     <p class="m-0!">{sponsor.name}</p>
+            // </div>
+        ))
+    }
+</div>

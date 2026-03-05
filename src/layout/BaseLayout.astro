@@ -4,7 +4,9 @@ import Fonts from "@/components/partials/Fonts.astro";
 import Head, {
     type Props as HeadProps,
 } from "@/components/partials/Head.astro";
+
 import "@/styles/global.css";
+import "@/styles/starwind.css";
 
 export interface Props extends HeadProps {
     bodyClass?: string;
@@ -14,7 +16,7 @@ const { bodyClass, ...props } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
     <head>
         <Head {...props} />
         <Fonts />

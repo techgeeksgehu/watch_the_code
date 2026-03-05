@@ -1,0 +1,77 @@
+---
+import HomeImage from "@/assets/images/nav/home.png";
+import TimelineImage from "@/assets/images/nav/timeline.png";
+import RulesImage from "@/assets/images/nav/rules.png";
+import SponsorImage from "@/assets/images/nav/sponsor.png";
+import AboutImage from "@/assets/images/nav/about.png";
+import Image from "../helpers/Image.astro";
+
+export const navItems = [
+    {
+        title: "Home",
+        image: HomeImage,
+        href: "/home/",
+    },
+    {
+        title: "Timeline",
+        image: TimelineImage,
+        href: "/timeline/",
+    },
+    {
+        title: "Rules",
+        image: RulesImage,
+        href: "/rules/",
+    },
+    {
+        title: "Sponsor",
+        image: SponsorImage,
+        href: "/sponsor/",
+    },
+    {
+        title: "About",
+        image: AboutImage,
+        href: "/about/",
+    },
+];
+
+function isCurrentPage(href: string) {
+    return Astro.url.pathname === href;
+}
+
+interface Props {
+    class?: string;
+}
+
+const { class: className, ...props } = Astro.props;
+---
+
+<nav
+    class:list={[
+        "w-full flex flex-row flex-wrap justify-evenly select-none",
+        className,
+    ]}
+    {...props}
+>
+    {
+        navItems.map((item) => (
+            <a
+                href={isCurrentPage(item.href) ? null : item.href}
+                class="flex flex-col align-middle items-center mb-8 hover:text-shadow-lg/50"
+            >
+                <Image
+                    src={item.image}
+                    alt={item.title}
+                    class="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-36 xl:w-36 object-contain"
+                />
+                <p
+                    class:list={[
+                        "text-lg md:text-xl lg:text-2xl xl:text-3xl text-white",
+                        "text-center font-minecraft tracking-wider text-shadow-md/50",
+                    ]}
+                >
+                    {item.title}
+                </p>
+            </a>
+        ))
+    }
+</nav>

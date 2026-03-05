@@ -12,16 +12,11 @@ body {
 	--font-pokemon-hollow: var(--font-pokemon-hollow);
 	--font-pokemon-solid: var(--font-pokemon-solid);
 	--font-minecraft: var(--font-minecraft);
-
-	--color-yellow-bg: #f8d030;
-	--color-yellow-white: #f8c030;
-	--color-yellow-red: #f8c030;
-	--color-yellow-outline: #f08030;
 }
 
 @layer base {
 	body {
-		@apply min-h-lvh overflow-x-hidden bg-black text-white;
+		@apply min-h-lvh overflow-x-hidden;
 	}
 
 	img {

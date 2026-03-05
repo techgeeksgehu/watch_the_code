@@ -2,25 +2,51 @@
 import Header from "@/components/ui/Header.astro";
 import BaseLayout, { type Props as BaseLayoutProps } from "./BaseLayout.astro";
 import Footer from "@/components/ui/Footer.astro";
+import Navigation from "@/components/ui/Navigation.astro";
 
-interface Props extends BaseLayoutProps {
+export interface Props extends BaseLayoutProps {
     headerClass?: string;
+    class?: string;
     mainClass?: string;
     footerClass?: string;
 }
 
-const { bodyClass, headerClass, mainClass, footerClass, ...props } =
-    Astro.props;
+const {
+    bodyClass,
+    mainClass,
+    headerClass,
+    class: className,
+    footerClass,
+    ...props
+} = Astro.props;
 ---
 
 <BaseLayout {...props} bodyClass={bodyClass}>
-    <Header class={headerClass} />
+    <div class="w-full relative min-h-lvh z-1">
+        <main
+            class:list={[
+                "flex flex-col px-2",
+                "mx-auto w-full md:max-w-4xl lg:max-w-5xl",
+                mainClass,
+            ]}
+        >
+            <Header class="flex-none p-4" transition:name="header" />
 
-    <main class={mainClass}>
-        <slot />
-    </main>
+            <Navigation />
 
-    <Footer class={footerClass} />
+            <section
+                class:list={[
+                    "flex-auto px-4 py-8",
+                    "flex flex-col gap-6 md:gap-8 lg:gap-10",
+                    className,
+                ]}
+            >
+                <slot />
+            </section>
+
+            <Footer class="flex-none p-4" transition:name="footer" />
+        </main>
+    </div>
 
     <Fragment slot="outside-smooth-scroll">
         <slot name="outside-smooth-scroll" />

@@ -1,0 +1,16 @@
+---
+layout: "@/layout/MarkdownLayout.astro"
+title: "Home"
+bodyClass: "text-white"
+---
+import Image from "@/components/helpers/Image.astro";
+import Logo from "@/assets/images/logo.png";
+
+<Image src={Logo} alt="Watch The Code Logo" class="md:w-[50%] w-full mx-auto mb-8" />
+
+import Sponsors from "@/components/pages/home/Sponsors.astro";
+
+<p class="text-center">Powered by</p>
+
+<Sponsors />
+

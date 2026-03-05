@@ -5,7 +5,22 @@
 </div>
 
 <script>
-    import { ScrollTrigger, ScrollSmoother } from "@/lib/gsap";
+    import { gsap, ScrollTrigger, ScrollSmoother } from "@/lib/gsap";
+
+    document.addEventListener("astro:page-load", () => {
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+        ScrollSmoother.create({
+            wrapper: "#smooth-wrapper",
+            content: "#smooth-content",
+            smooth: 1,
+            smoothTouch: 0.05,
+            effects: true,
+            ease: "power1.out",
+        });
+    });
+
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
     ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
@@ -16,10 +31,6 @@
         ease: "power1.out",
     });
 
-    // Recalculate all ScrollTrigger positions after every resource
-    // (images, fonts, video metadata) has finished loading. Without this,
-    // later sections whose trigger offsets depend on the fully-laid-out
-    // page may end up with wrong start/end values and never animate.
     window.addEventListener("load", () => {
         ScrollSmoother.get()?.scrollTrigger?.refresh();
         ScrollTrigger.refresh(true);

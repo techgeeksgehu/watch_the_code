@@ -5,7 +5,8 @@ let text: HTMLSpanElement;
   
 <a bind:this={button}
     class="inline-block bg-[#3d7ccb] text-[#ffcb05] text-2xl font-minecraft rounded-xl p-3 cursor-pointer"
-    href="https://unstop.com/hackathons/watch-the-code-2026-graphic-era-hill-university-gehu-haldwani-campus-1644923"
+    // href="https://unstop.com/hackathons/watch-the-code-2026-graphic-era-hill-university-gehu-haldwani-campus-1644923"
+    href="/home/"
     onmouseenter={()=>{
         gsap.to(button,{
             paddingLeft: 18,
@@ -24,6 +25,6 @@ let text: HTMLSpanElement;
     }}
 >
     <span bind:this={text} class="inline-block">
-        Register
+        Explore
     </span>
 </a>
