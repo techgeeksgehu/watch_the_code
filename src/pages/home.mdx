@@ -5,12 +5,25 @@ bodyClass: "text-white"
 ---
 import Image from "@/components/helpers/Image.astro";
 import Logo from "@/assets/images/logo.png";
+import Countdown from "@/components/pages/Countdown.svelte";
+import PokemonText from "@/components/widgets/PokemonText.svelte";
+import Sponsors from "@/components/pages/home/Sponsors.astro";
+import Mentors from "@/components/pages/home/Mentors.astro";
 
 <Image src={Logo} alt="Watch The Code Logo" class="md:w-[50%] w-full mx-auto mb-8" />
 
-import Sponsors from "@/components/pages/home/Sponsors.astro";
+#
 
-<h6 class="text-center">Powered by</h6>
+
+<Countdown client:load/>
+
+#
+
+<h3><PokemonText text="Powered by" align="center" solidClass="text-[#ffcb05]"/></h3>
 
 <Sponsors />
+
+<h3><PokemonText text="Mentors" align="center" solidClass="text-[#ffcb05]"/></h3>
+
+<Mentors />
 

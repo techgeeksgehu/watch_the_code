@@ -3,25 +3,25 @@ import Image from "@/components/helpers/Image.astro";
 import PokemonCard from "@/components/widgets/PokemonCard.astro";
 import { getCollection } from "astro:content";
 
-const sponsors = await getCollection("sponsors");
-sponsors.sort((a, b) => a.data.name.localeCompare(b.data.name));
+const mentors = await getCollection("mentors");
+mentors.sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
 <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
 >
     {
-        sponsors.map((sponsor) => (
+        mentors.map((mentor) => (
             <a
-                href={sponsor.data.href}
+                href={mentor.data.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                id={sponsor.id}
+                id={mentor.id}
             >
                 <PokemonCard>
                     <Image
-                        src={sponsor.data.image}
-                        alt={sponsor.data.name}
+                        src={mentor.data.image}
+                        alt={mentor.data.name}
                         class="w-full h-auto object-contain"
                     />
                 </PokemonCard>
