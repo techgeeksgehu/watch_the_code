@@ -33,8 +33,7 @@ const words: string[] = text.trim().split(" ");
 								class={[
 									"font-pokemon-hollow",
 									"relative z-1 block",
-									"text-black",
-									hollowClass
+									hollowClass ?? "text-black",
 								]}
 							>
 								{letter}
@@ -43,8 +42,7 @@ const words: string[] = text.trim().split(" ");
 								class={[
 									"font-pokemon-solid",
 									"absolute top-0 left-0 z-0",
-									"text-white",
-									solidClass
+									solidClass ?? "text-white",
 								]}
 							>
 								{letter}
