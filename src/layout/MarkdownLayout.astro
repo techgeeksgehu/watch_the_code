@@ -40,7 +40,9 @@ const bg = [
 ---
 
 <PageLayout {...frontmatter}>
-    <MarkdownContent>
+    <MarkdownContent
+        class="p-10 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg"
+    >
         <slot />
     </MarkdownContent>
 
@@ -49,7 +51,7 @@ const bg = [
             <Image
                 src={bg.find((bg) => bg.path === Astro.url.pathname)?.image}
                 alt="Background"
-                class="w-full h-full object-cover blur-xs"
+                class="w-full h-full object-cover"
             />
         </div>
     </Fragment>

@@ -7,11 +7,25 @@ body {
 	margin: 0; /* Remove default margin */
 }
 
+:root {
+	--theme-bg: var(--color-white);
+	--theme-white: var(--color-black);
+	--theme-outline: var(--color-black);
+	--theme-accent: var(--color-red-500);
+	--theme-shadow: var(--color-gray-500);
+}
+
 @theme inline {
 	--font-sans: var(--font-noto-sans);
 	--font-pokemon-hollow: var(--font-pokemon-hollow);
 	--font-pokemon-solid: var(--font-pokemon-solid);
 	--font-minecraft: var(--font-minecraft);
+
+	--color-theme-bg: var(--theme-bg);
+	--color-theme-white: var(--theme-white);
+	--color-theme-outline: var(--theme-outline);
+	--color-theme-accent: var(--theme-accent);
+	--color-theme-shadow: var(--theme-shadow);
 }
 
 @layer base {

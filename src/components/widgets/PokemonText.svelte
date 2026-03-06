@@ -28,7 +28,7 @@ const words: string[] = text.trim().split(" ");
 		{#each words as word}
 			<span class="flex flex-row flex-wrap last:[&>.last-space]:hidden first:[&>.first-space]:hidden select-none">
 					{#each word.split("") as letter}
-						<span class="relative">
+						<span class="relative hover:scale-110 transition-transform duration-300">
 							<span
 								class={[
 									"font-pokemon-hollow",
@@ -54,11 +54,11 @@ const words: string[] = text.trim().split(" ");
 		{/each}
 
 	</span>
-	<span
+	<!-- <span
 		class={[
 			"absolute top-0 left-0 w-full h-full z-1",
 			"font-pokemon-hollow text-transparent",
 			`text-${align}`,
 		]}>{text}</span
-	>
+	> -->
 </span>

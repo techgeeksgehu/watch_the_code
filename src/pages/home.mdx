@@ -1,7 +1,11 @@
 ---
 layout: "@/layout/MarkdownLayout.astro"
 title: "Home"
-bodyClass: "text-white"
+backgroundColor: "#F4AE12"
+whiteColor: "#FFF2D0"
+accentColor: "#AD2A19"
+outlineColor: "#6B1900"
+shadowColor: "#361800"
 ---
 import Image from "@/components/helpers/Image.astro";
 import Logo from "@/assets/images/logo.png";
@@ -10,20 +14,26 @@ import PokemonText from "@/components/widgets/PokemonText.svelte";
 import Sponsors from "@/components/pages/home/Sponsors.astro";
 import Mentors from "@/components/pages/home/Mentors.astro";
 
+#
+
 <Image src={Logo} alt="Watch The Code Logo" class="md:w-[50%] w-full mx-auto mb-8" />
 
 #
 
-
 <Countdown client:load/>
 
-#
 
-<h3><PokemonText text="Powered by" align="center" solidClass="text-[#ffcb05]" hollowClass="text-[#3f7ecc]"/></h3>
+## Prize Pool
+
+
+<h1><PokemonText text="1,00,000/-" align="center"/></h1>
+
+
+## Powered By
 
 <Sponsors />
 
-<h3><PokemonText text="Mentors" align="center" solidClass="text-[#ffcb05]" hollowClass="text-[#3f7ecc]"/></h3>
+## Mentors
 
 <Mentors />
 

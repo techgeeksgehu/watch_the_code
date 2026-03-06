@@ -68,7 +68,7 @@ const time = $derived.by(() => {
 				<p
 					class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl m-0! text-shadow-lg"
 				>
-					<PokemonText text=":" align="center" />
+					:
 				</p>
 			</div>
 		{/if}
@@ -76,6 +76,6 @@ const time = $derived.by(() => {
 </div>
 
 <p class="mt-5 font-light">
-	<PokemonText text="* Round 1 starts Mar 21th, 2026" align="center"/>
+	<PokemonText text="* Round 1 starts Mar 21st, 2026" align="center"/>
 </p>
 

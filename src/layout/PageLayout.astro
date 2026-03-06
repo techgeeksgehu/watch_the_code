@@ -30,7 +30,10 @@ const {
                 mainClass,
             ]}
         >
-            <Header class="flex-none p-4" transition:name="header" />
+            <Header
+                class:list={["flex-none p-4", headerClass]}
+                transition:name="header"
+            />
 
             <Navigation />
 
@@ -44,7 +47,10 @@ const {
                 <slot />
             </section>
 
-            <Footer class="flex-none p-4" transition:name="footer" />
+            <Footer
+                class:list={["flex-none p-4", footerClass]}
+                transition:name="footer"
+            />
         </main>
     </div>
 

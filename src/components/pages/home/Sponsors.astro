@@ -7,9 +7,7 @@ const sponsors = await getCollection("sponsors");
 sponsors.sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
-<div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
     {
         sponsors.map((sponsor) => (
             <a

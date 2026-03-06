@@ -5,6 +5,7 @@ import RulesImage from "@/assets/images/nav/rules.png";
 import SponsorImage from "@/assets/images/nav/sponsor.png";
 import AboutImage from "@/assets/images/nav/about.png";
 import Image from "../helpers/Image.astro";
+import PokemonText from "../widgets/PokemonText.svelte";
 
 export const navItems = [
     {
@@ -65,11 +66,11 @@ const { class: className, ...props } = Astro.props;
                 />
                 <p
                     class:list={[
-                        "text-lg md:text-xl lg:text-2xl xl:text-3xl text-white",
-                        "text-center font-minecraft tracking-wider text-shadow-md/50",
+                        "text-lg md:text-xl lg:text-2xl xl:text-3xl ",
+                        "text-center  tracking-wider text-shadow-md/50",
                     ]}
                 >
-                    {item.title}
+                    <PokemonText text={item.title} align="center" />
                 </p>
             </a>
         ))
