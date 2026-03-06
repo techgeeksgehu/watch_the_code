@@ -28,3 +28,54 @@ const { bodyClass, ...props } = Astro.props;
         <slot name="outside-smooth-scroll" />
     </body>
 </html>
+
+<script>
+    import type { TransitionBeforePreparationEvent } from "astro:transitions/client";
+
+    document.addEventListener(
+        "astro:before-preparation",
+        (e: TransitionBeforePreparationEvent) => {
+            if (!e.sourceElement) return;
+
+            const rect = e.sourceElement.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            sessionStorage.setItem("click-x", x.toString());
+            sessionStorage.setItem("click-y", y.toString());
+        },
+    );
+
+    document.addEventListener("astro:after-swap", () => {
+        const x = sessionStorage.getItem("click-x") || window.innerWidth / 2;
+        const y = sessionStorage.getItem("click-y") || window.innerHeight / 2;
+
+        document.documentElement.style.setProperty("--click-x", `${x}px`);
+        document.documentElement.style.setProperty("--click-y", `${y}px`);
+    });
+</script>
+
+<style is:global>
+    :root {
+        --click-x: 50%;
+        --click-y: 50%;
+    }
+
+    ::view-transition-old(root) {
+        animation: none;
+    }
+
+    ::view-transition-new(root) {
+        animation: hole 500ms ease-in;
+    }
+
+    @keyframes hole {
+        from {
+            clip-path: circle(0% at var(--click-x, 50%) var(--click-y, 50%));
+        }
+
+        to {
+            clip-path: circle(100% at var(--click-x, 50%) var(--click-y, 50%));
+        }
+    }
+</style>

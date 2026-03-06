@@ -28,7 +28,7 @@ const words: string[] = text.trim().split(" ");
 		{#each words as word}
 			<span class="flex flex-row flex-wrap last:[&>.last-space]:hidden first:[&>.first-space]:hidden select-none">
 					{#each word.split("") as letter}
-						<span class="relative hover:scale-110 transition-transform duration-300">
+						<span class="relative hover:scale-110 transition-transform duration-150">
 							<span
 								class={[
 									"font-pokemon-hollow",

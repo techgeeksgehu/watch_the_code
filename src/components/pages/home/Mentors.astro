@@ -7,7 +7,7 @@ const mentors = await getCollection("mentors");
 mentors.sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     {
         mentors.map((mentor) => (
             <a
@@ -15,6 +15,7 @@ mentors.sort((a, b) => a.data.name.localeCompare(b.data.name));
                 target="_blank"
                 rel="noopener noreferrer"
                 id={mentor.id}
+                class="group flex flex-col items-center gap-3 no-underline!"
             >
                 <PokemonCard>
                     <Image
@@ -23,6 +24,16 @@ mentors.sort((a, b) => a.data.name.localeCompare(b.data.name));
                         class="w-full h-auto object-contain"
                     />
                 </PokemonCard>
+                <div class="text-center px-1">
+                    <p class="font-minecraft text-sm md:text-base tracking-wide leading-snug opacity-80 group-hover:opacity-100 transition-opacity">
+                        {mentor.data.name}
+                    </p>
+                    {mentor.data.org && (
+                        <p class="font-minecraft text-xs tracking-wide opacity-50 group-hover:opacity-70 transition-opacity mt-0.5">
+                            {mentor.data.org}
+                        </p>
+                    )}
+                </div>
             </a>
         ))
     }

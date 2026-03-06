@@ -1,39 +1,78 @@
 ---
 layout: "@/layout/MarkdownLayout.astro"
 title: "Home"
-backgroundColor: "#F4AE12"
-whiteColor: "#FFF2D0"
-accentColor: "#AD2A19"
-outlineColor: "#6B1900"
-shadowColor: "#361800"
 ---
 import Image from "@/components/helpers/Image.astro";
 import Logo from "@/assets/images/logo.png";
 import Countdown from "@/components/pages/Countdown.svelte";
 import PokemonText from "@/components/widgets/PokemonText.svelte";
+import Divider from "@/components/widgets/Divider.astro";
 import Sponsors from "@/components/pages/home/Sponsors.astro";
+import Partners from "@/components/pages/home/Partners.astro";
 import Mentors from "@/components/pages/home/Mentors.astro";
 
+
+<div class="not-prose flex flex-col items-center gap-3 py-4">
+  <Image src={Logo} transition:name="wtc-logo" alt="Watch The Code Logo" class="w-[85%] md:w-[55%] mx-auto drop-shadow-2xl" />
+  <div class="flex items-center gap-3 font-minecraft text-sm md:text-base tracking-widest">
+    <span>March 21 - April 19, 2026</span>
+  </div>
+</div>
+
 #
 
-<Image src={Logo} alt="Watch The Code Logo" class="md:w-[50%] w-full mx-auto mb-8" />
+<Countdown client:load />
 
 #
 
-<Countdown client:load/>
+<Divider class="text-[#00511A]"/>
+
+<div class="flex flex-col items-center gap-4 py-2">
+  <h3>
+    <PokemonText text="Prize Pool" align="center" solidClass="text-[#FFF2D0]" hollowClass="text-[#00511A]"/>
+  </h3>
+    <h1>
+      <PokemonText text="1,00,000" align="center" solidClass="text-[#C34B2B]" hollowClass="text-[#00511A]"/>
+  </h1>
+</div>
+
+#
+
+<Divider class="text-[#AD2A19]"/>
+
+<div class="flex flex-col gap-6">
+  <h2 class="font-minecraft text-2xl md:text-3xl lg:text-4xl tracking-widest text-center">
+    <PokemonText text="Sponsors" align="center" solidClass="text-[#FFF2D0]" hollowClass="text-[#AD2A19]" />
+  </h2>
+  <div class="not-prose">
+    <Sponsors />
+  </div>
+</div>
+
+#
+
+<Divider class="text-[#22385C]"/>
+
+<div class="flex flex-col gap-6">
+  <h2>
+    <PokemonText text="Community" align="center" solidClass="text-[#FFF2D0]" hollowClass="text-[#22385C]"/>
+  </h2>
+  <div class="not-prose">
+    <Partners />
+  </div>
+</div>
 
 
-## Prize Pool
+#
 
+<Divider class="text-[#5E030D]"/>
 
-<h1><PokemonText text="1,00,000/-" align="center"/></h1>
-
-
-## Powered By
-
-<Sponsors />
-
-## Mentors
-
-<Mentors />
+<div class="flex flex-col gap-6">
+  <h2>
+    <PokemonText text="Mentors" align="center" solidClass="text-[#5E030D]" hollowClass="text-[#FFF2D0]"/>
+  </h2>
+  <div class="not-prose">
+    <Mentors />
+  </div>
+</div>
 

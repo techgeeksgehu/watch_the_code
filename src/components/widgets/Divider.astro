@@ -1,0 +1,40 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className, ...props } = Astro.props;
+---
+
+<div class:list={["flex items-center gap-4 my-10", className]} {...props}>
+    <div class="flex-1 h-0.75 rounded-full bg-current"></div>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100"
+        class="w-8 h-8 shrink-0 select-none"
+        aria-hidden="true"
+    >
+        <path d="M5 50 A45 45 0 0 1 95 50 Z" fill="currentColor" opacity="0.8"
+        ></path>
+        <path d="M5 50 A45 45 0 0 0 95 50 Z" fill="white" opacity="0.6"></path>
+        <circle
+            cx="50"
+            cy="50"
+            r="45"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+            opacity="0.8"></circle>
+        <rect
+            x="5"
+            y="46"
+            width="90"
+            height="8"
+            fill="currentColor"
+            opacity="0.8"></rect>
+        <circle cx="50" cy="50" r="12" fill="currentColor" opacity="0.8"
+        ></circle>
+        <circle cx="50" cy="50" r="7" fill="white" opacity="0.9"></circle>
+    </svg>
+    <div class="flex-1 h-0.75 rounded-full bg-current"></div>
+</div>

@@ -28,6 +28,7 @@ const partnersCollection = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			name: z.string(),
+			org: z.string().optional(),
 			image: image(),
 			href: z.string(),
 		}),

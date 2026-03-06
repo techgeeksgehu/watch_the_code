@@ -74,8 +74,3 @@ const time = $derived.by(() => {
 		{/if}
 	{/each}
 </div>
-
-<p class="mt-5 font-light">
-	<PokemonText text="* Round 1 starts Mar 21st, 2026" align="center"/>
-</p>
-
