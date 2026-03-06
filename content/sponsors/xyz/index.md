@@ -1,6 +1,6 @@
 ---
 name: ".XYZ"
-title: "Domain Sponsor"
+title: "Domain Partner"
 href: "https://xyz.com"
 image: image.png
 ---
