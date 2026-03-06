@@ -1,5 +1,5 @@
 ---
 name: "Tech Verse"
-href: ""
+href: "https://www.instagram.com/techverse.098/"
 image: "image.png"
 ---
