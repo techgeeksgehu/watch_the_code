@@ -1,6 +1,6 @@
 ---
 name: "CodeCrafters.io"
-title: "Learning Partner"
+title: "Building Partner"
 href: "https://codecrafters.io"
 image: image.png
 ---
