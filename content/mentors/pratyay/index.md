@@ -2,5 +2,5 @@
 name: "Pratyay Chatterjee"
 image: image.png
 href: "https://www.linkedin.com/in/pratyaychatterjee"
-org: "Hack Nest"
+org: "HackNest"
 ---

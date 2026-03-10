@@ -20,7 +20,7 @@ const { bodyClass, ...props } = Astro.props;
         <Head {...props} />
         <Fonts />
     </head>
-    <body class:list={[bodyClass]}>
+    <body class={bodyClass}>
         <SmoothScroller>
             <slot />
         </SmoothScroller>
