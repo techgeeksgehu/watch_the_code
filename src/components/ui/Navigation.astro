@@ -70,7 +70,20 @@ const { class: className, ...props } = Astro.props;
                         "text-center  tracking-wider text-shadow-md/50",
                     ]}
                 >
-                    <PokemonText text={item.title} align="center" />
+                    <PokemonText
+                        text={item.title}
+                        align="center"
+                        solidClass={
+                            isCurrentPage(item.href)
+                                ? "text-[#ffcb05]"
+                                : "text-white"
+                        }
+                        hollowClass={
+                            isCurrentPage(item.href)
+                                ? "text-[#033b70]"
+                                : "text-black"
+                        }
+                    />
                 </p>
             </a>
         ))

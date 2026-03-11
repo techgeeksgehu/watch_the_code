@@ -15,7 +15,7 @@ const {
 	hollowClass,
 }: Props = $props();
 
-const words: string[] = text.trim().split(" ");
+const words: string[] = $derived(text.trim().split(" "));
 </script>
 
 <span class={["relative w-full inline-block text-shadow-none", customClass]}>

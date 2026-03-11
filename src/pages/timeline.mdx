@@ -1,7 +1,93 @@
 ---
 layout: "@/layout/MarkdownLayout.astro"
 title: "Timeline"
-bodyClass: "text-white"
+bodyClass: "text-black"
 ---
 
+import Image from "@/components/helpers/Image.astro";
+import I1 from "@/assets/images/pages/timeline/i1.png";
+import I2 from "@/assets/images/pages/timeline/i2.png";
+import O1 from "@/assets/images/pages/timeline/o1.png";
+import O2 from "@/assets/images/pages/timeline/o2.png";
+import M1 from "@/assets/images/pages/timeline/m1.png";
+import M2 from "@/assets/images/pages/timeline/m2.png";
+
 ## Timeline
+
+<div class="bg-white/50 backdrop-blur-xl rounded-4xl p-5 md:p-10 my-10">
+
+<Image src={I1} alt="Indigo 1" class="w-full h-auto object-contain rounded-t-2xl" pictureAttributes={{style: "margin-top: 0;"}}/>
+
+##### Round 1 - Indigo League
+
+---
+
+###### Details
+
+- **Type:** Ideation Round
+- **Date:** 21st - 22nd March 2026
+- **Mode:** Online
+- **Submission:** Unstop
+- **Format:** PPT (submitted as .pdf)
+
+###### What to do?
+
+1. Choose a project idea from the official list of problem statements (released on 15th March 2026) or **your own innovative idea**.
+2. Develop a comprehensive project proposal, including problem statement, solution approach, and expected impact.
+3. Submit your proposal through the Unstop platform by the specified deadline.
+
+<Image src={I2} alt="Indigo 2" class="w-full h-auto object-contain rounded-b-2xl" pictureAttributes={{style: "margin-bottom: 0;"}}/>
+
+</div>
+
+<div class="bg-white/50 backdrop-blur-xl rounded-4xl p-5 md:p-10 my-10">
+
+<Image src={O1} alt="Orange 1" class="w-full h-auto object-contain rounded-t-2xl" pictureAttributes={{style: "margin-top: 0;"}}/>
+
+##### Round 2 - Orange League
+
+---
+
+###### Details
+
+- **Type:** Prototyping Round
+- **Date:** 27th - 29th March 2026
+- **Mode:** Online
+- **Submission:** GitHub
+- **Format:** Code Repository (with README and documentation)
+
+###### What to do?
+
+1. Based on the feedback received from Round 1, develop a working prototype of your project idea.
+2. Create a GitHub repository for your project, including all source code, documentation, and a detailed README file explaining the project, its features, and how to run it.
+3. Submit the link to your GitHub repository through the Unstop platform by the specified deadline.
+
+<Image src={O2} alt="Orange 2" class="w-full h-auto object-contain rounded-b-2xl" pictureAttributes={{style: "margin-bottom: 0;"}}/>
+
+</div>
+
+<div class="bg-white/50 backdrop-blur-xl rounded-4xl p-5 md:p-10 my-10">
+
+<Image src={M1} alt="Masters 1" class="w-full h-auto object-contain rounded-t-2xl" pictureAttributes={{style: "margin-top: 0;"}}/>
+
+##### Round 3 - Masters League
+
+---
+
+###### Details
+
+- **Type:** Final Round
+- **Date:** 18th - 19th April 2026
+- **Mode:** Offline
+- **Venue:** GEHU Haldwani Campus
+- **Format:** Code Repository & Live Presentation
+
+###### What to do?
+
+1. Finalists will be given a task list when the event starts based on their prototype from Round 2, which they need to complete within a specified time frame during the event.
+2. Further tasks will be provided during the event by mentors and judges, which may include additional features, optimizations, or bug fixes.
+3. Finally participants will have to present their project to the judges and audience, showcasing their solution, the development process, and the impact of their project.
+
+<Image src={M2} alt="Masters 2" class="w-full h-auto object-contain rounded-b-2xl" pictureAttributes={{style: "margin-bottom: 0;"}}/>
+
+</div>

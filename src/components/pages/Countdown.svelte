@@ -54,7 +54,7 @@ const time = $derived.by(() => {
 			<p
 				class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl m-0! text-shadow-lg"
 			>
-				{String(value).padStart(2, "0")}
+				<PokemonText text={String(value).padStart(2, "0")} align="center" />
 			</p>
 			<p
 				class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-shadow-lg"
@@ -68,7 +68,7 @@ const time = $derived.by(() => {
 				<p
 					class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl m-0! text-shadow-lg"
 				>
-					:
+					<PokemonText text=":" align="center" />
 				</p>
 			</div>
 		{/if}

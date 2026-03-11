@@ -4,11 +4,18 @@ title: "About"
 bodyClass: "text-black"
 ---
 
+import Image from "@/components/helpers/Image.astro";
+import GEHU from "@/assets/images/pages/about/gehu.jpg";
+import GEHUHaldwani from "@/assets/images/pages/about/gehu-hld.jpg";
+import TG from "@/assets/images/pages/about/tg.jpg";
+
 # About Us
 
 ### The University
 
 <div class="bg-white/50 backdrop-blur-xl rounded-4xl p-5 md:p-10">
+
+<Image src={GEHU} alt="Graphic Era Hill University" class="w-full h-auto object-contain rounded-t-2xl" pictureAttributes={{style: "margin-top: 0;"}}/>
 
 Graphic Era Hill University (GEHU), established in 2011 in Uttarakhand, India,
 aims to provide world-class education focusing on advanced technologies,
@@ -22,6 +29,8 @@ achieving students and guided by a qualified faculty.
 
 <div class="bg-white/50 backdrop-blur-xl rounded-4xl p-5 md:p-10">
 
+<Image src={GEHUHaldwani} alt="GEHU Haldwani Campus" class="w-full h-auto object-contain rounded-t-2xl" pictureAttributes={{style: "margin-top: 0;"}}/>
+
 The GEHU Haldwani Campus combines
 natural beauty with urban vitality, featuring
 an amphitheater, cafeterias, sports fields, a
@@ -33,9 +42,11 @@ educational experience.
 
 </div>
 
-### The CLub
+### The Club
 
 <div class="bg-white/50 backdrop-blur-xl rounded-4xl p-5 md:p-10">
+
+<Image src={TG} alt="Tech Geeks Club" class="w-full h-auto object-contain rounded-t-2xl" pictureAttributes={{style: "margin-top: 0;"}}/>
 
 Founded in 2020, the Tech Geeks Club is
 GEHU Haldwani's official technology club,

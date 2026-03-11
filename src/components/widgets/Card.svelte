@@ -1,5 +1,5 @@
 <script lang="ts">
-import { HoverTilt } from "hover-tilt";
+import HoverTilt from "hover-tilt/HoverTilt.svelte";
 </script>
 
 <HoverTilt
