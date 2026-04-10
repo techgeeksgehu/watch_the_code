@@ -14,10 +14,10 @@ export default defineConfig({
 	cacheDir: "./cache/astro",
 	compressHTML: true,
 	integrations: [icon(), svelte(), mdx()],
-	// prefetch: {
-	// 	prefetchAll: true,
-	// 	defaultStrategy: "viewport",
-	// },
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: "viewport",
+	},
 	fonts,
 	experimental: {
 		svgo: true,
